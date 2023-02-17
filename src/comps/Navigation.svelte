@@ -31,8 +31,11 @@
 <nav>
     <div class="container">
         <button class="btn" id="connect-btn" on:click={connect}>{connectstatus}</button>
-        <h4>Address: {address}</h4>
-        <h4>Network: {network}</h4>
+        {#if address}
+            <h4>Address: {address}</h4>
+            <h4>Network: {network}</h4>
+            <hr>
+        {/if}
     </div>
 </nav>
 <style>
