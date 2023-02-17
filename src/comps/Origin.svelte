@@ -34,6 +34,11 @@
         });
     }
 
+    async function getOriginTokenBalancesRegular(address: string) {
+        const interval = setInterval(() => getOriginTokenBalances(address), 5000);
+        return () => clearInterval(interval);
+    }
+
     async function burn(tokenID: any) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
@@ -55,45 +60,9 @@
     }
 
     $: if (address) {
-        getOriginTokenBalances(address);
+        getOriginTokenBalancesRegular(address);
     }
-
-    //const balancesresult = getOriginTokenBalances(address);
-
-    // onMount(() => {
-    //     if (address) {
-    //         getOriginTokenBalances(address);
-    //     }
-    // });
 </script>
-
-<!-- {#await balancesresult}
-    <div>loading...</div>
-{:then balancesresult}
-    {#if address}
-        {#if balancesresult.length > 0  && network == "Binance Smart Chain"}
-            <div class="tokenlist">
-                <ul>
-                    {#each balancesresult as token}
-                        <li>
-                            <div class="token">
-                                <img src="bnb.jpg" alt="bnb" /><span
-                                    >{token.token_id}</span
-                                ><button
-                                    class="btn"
-                                    on:click={() => burn(token.token_id)}
-                                    >Migrate</button
-                                >
-                            </div>
-                        </li>
-                        <li />{/each}
-                </ul>
-            </div>
-        {:else}
-            <div>No tokens to migrate...</div>
-        {/if}
-    {/if}
-{/await} -->
 {#if address}
     {#if balancesresult.length > 0  && network == "Binance Smart Chain"}
         <div class="tokenlist">
