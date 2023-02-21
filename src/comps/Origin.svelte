@@ -26,7 +26,6 @@
         );
         const balancesjson = await balances.json();
         balancesresult = balancesjson.result;
-        balancesresult.sort();
         balancesresult = balancesresult.sort((a: any, b: any) => {
             if (a.token_id < b.token_id) {
                 return -1;

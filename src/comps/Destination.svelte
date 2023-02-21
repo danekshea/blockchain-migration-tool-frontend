@@ -5,13 +5,10 @@
     let balancesresult: any = [];
     export let address: string = "";
 
-    $: if (address) {
-        getDestinationTokenBalances(address);
-    }
 
-    export async function getDestinationTokenBalances(address: string) {
+    async function getDestinationTokenBalances(address: string) {
         const balances = await fetch(
-            "https://api.sandbox.x.immutable.com/v1/assets?user=" + address +"&collection=0x43b2a84416bdad7091148a97f4c974dc0c2f0227",
+            "https://api.sandbox.x.immutable.com/v1/assets?user=" + address +"&collection=0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3",
             {
                 method: "GET",
                 headers: {
@@ -21,7 +18,6 @@
         );
         const balancesjson = await balances.json();
         balancesresult = balancesjson.result;
-        balancesresult.sort();
         balancesresult = balancesresult.sort((a: any, b: any) => {
             if (a.token_id < b.token_id) {
                 return -1;
@@ -29,11 +25,14 @@
         });
     }
 
-    onMount(() => {
-        if (address) {
-            getDestinationTokenBalances(address);
-        }
-    });
+    async function getDestinationTokenBalancesRegular(address: string) {
+        const interval = setInterval(() => getDestinationTokenBalances(address), 5000);
+        return () => clearInterval(interval);
+    }
+
+    $: if (address) {
+        getDestinationTokenBalancesRegular(address);
+    }
 </script>
 
 <div class="tokenlist">
