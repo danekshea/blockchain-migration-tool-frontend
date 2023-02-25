@@ -1,20 +1,13 @@
 <script lang="ts">
-    import { ethers } from "ethers";
-    import { onMount } from "svelte";
+    import { destinationIMXURL, destinationScannerURL } from "../utils/blockchain";
 
     let balancesresult: any = [];
     export let address: string = "";
 
-    const immutableURL = "https://api.sandbox.x.immutable.com/v1/assets?user=";
-    const immutableURLextension = "&collection=";
-    const collectionAddress = "0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3";
-    const destination_scanner_url = "https://immutascan.io/address/0x43b2a84416bdad7091148a97f4c974dc0c2f0227/";
-
-
     async function getDestinationTokenBalances(address: string) {
         console.log("Getting destination token balances...");
         const balances = await fetch(
-            immutableURL + address + immutableURLextension + collectionAddress,
+            destinationIMXURL(address),
             {
                 method: "GET",
                 headers: {
@@ -47,7 +40,12 @@
             {#each balancesresult as token}
                 <li>
                     <div class="token">
-                        <img src="imx.png" alt="imx"><a href="{destination_scanner_url}{token.token_id}" target="_blank" rel="noreferrer">{token.token_id}</a>
+                        <img src="imx.png" alt="imx">
+                        {#if destinationScannerURL(token.token_id)}
+                            <a href="{destinationScannerURL(token.token_id)}" target="_blank" rel="noreferrer">{token.token_id}</a>
+                        {:else}
+                            {token.token_id}
+                        {/if}
                     </div>
                 </li>
             {/each}
