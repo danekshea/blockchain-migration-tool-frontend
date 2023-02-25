@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { chains } from "../utils/imx";
+    import { chains } from "../utils/blockchain";
 
     export let connectstatus = "Connect";
     export let network = "";
