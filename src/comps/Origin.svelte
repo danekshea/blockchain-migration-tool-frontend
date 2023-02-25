@@ -1,6 +1,6 @@
 <script lang="ts">
     import { ethers } from "ethers";
-    import { moralisAPIkey, originMoralisURL } from "../utils/blockchain";
+    import { moralisAPIkey, originMoralisURL, originCollectionAddress } from "../utils/blockchain";
 
     export let address: string = "";
     export let network: string = "";
@@ -41,7 +41,7 @@
         const signer = provider.getSigner();
 
         const contract = new ethers.Contract(
-            "0xeDC085dC8797AF5E75Ce5Fc7b2A929639A013635",
+            originCollectionAddress,
             abi,
             signer
         );

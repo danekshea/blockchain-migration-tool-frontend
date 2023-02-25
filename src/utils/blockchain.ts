@@ -15,7 +15,7 @@ export const chains: { [key: number]: string[] } = {
 
 //Network the frontend should be on, use the chain id
 export const network: number = 56;
-const originCollectionAddress: string =  "0xeDC085dC8797AF5E75Ce5Fc7b2A929639A013635";
+export const originCollectionAddress: string =  "0xeDC085dC8797AF5E75Ce5Fc7b2A929639A013635";
 
 //Use the chain IDs to define to which IMX network to use. Ethereum=IMX mainnet, Goerli=IMX sandbox
 export const destinationNetwork: number = 5;

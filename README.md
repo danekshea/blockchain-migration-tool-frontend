@@ -37,5 +37,8 @@ You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
 
+## Configuration
+* Set all the environment variables including the contract ABI located in Origin.svelte
+
 ## TO-DO
-*Strongly type everything
+* Strongly type everything
