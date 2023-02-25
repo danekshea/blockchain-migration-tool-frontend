@@ -67,7 +67,7 @@
                 {#each balancesresult as token}
                     <li>
                         <div class="token">
-                            <img src="bnb.jpg" alt="bnb" /><span
+                            <img src="bnb.svg" alt="bnb" /><span
                                 >{token.token_id}</span
                             ><button
                                 class="btn"
