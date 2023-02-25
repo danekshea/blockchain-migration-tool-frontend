@@ -1,13 +1,12 @@
 <script lang="ts">
     import { ethers } from "ethers";
-    import { onMount } from "svelte";
+    import { moralisAPIkey, originMoralisURL } from "../utils/blockchain";
 
     export let address: string = "";
     export let network: string = "";
     let balancesresult: any = [];
-    const moralisURL = "https://deep-index.moralis.io/api/v2/";
-    const moralisURLextension = "/nft?chain=bsc&format=decimal&token_addresses%5B0%5D=";
-    const moralisAPIkey = "C9P2Jz8zrkYra6N6CSAGb49lw7WBbjbYfBOdO8AEAid8tnym6k3GhbV7kJc16wS3";
+    //const moralisURL = "https://deep-index.moralis.io/api/v2/";
+    //const moralisURLextension = "/nft?chain=bsc&format=decimal&token_addresses%5B0%5D=";
     const collectionAddress = "0xeDC085dC8797AF5E75Ce5Fc7b2A929639A013635";
     
     const abi = JSON.parse(
@@ -17,7 +16,7 @@
     async function getOriginTokenBalances(address: string) {
         console.log("Getting origin token balances...");
         const balances = await fetch(
-                moralisURL + address + moralisURLextension + collectionAddress,
+                originMoralisURL("bsc", address, collectionAddress),
             {
                 headers: {
                     accept: "application/json",
