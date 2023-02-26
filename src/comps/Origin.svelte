@@ -1,9 +1,10 @@
 <script lang="ts">
     import { ethers } from "ethers";
-    import { moralisAPIkey, originMoralisURL, originCollectionAddress } from "../utils/blockchain";
+    import { moralisAPIkey, originMoralisURL, originCollectionAddress, chains, originNetwork } from "../utils/blockchain";
 
     export let address: string = "";
     export let network: string = "";
+
     let balancesresult: any = [];
     
     const abi = JSON.parse(
@@ -61,26 +62,30 @@
     }
 </script>
 {#if address}
-    {#if balancesresult.length > 0  && network == "Binance Smart Chain"}
-        <div class="tokenlist">
-            <ul>
-                {#each balancesresult as token}
-                    <li>
-                        <div class="token">
-                            <img src="bnb.svg" alt="bnb" /><span
-                                >{token.token_id}</span
-                            ><button
-                                class="btn"
-                                on:click={() => burn(token.token_id)}
-                                >Migrate</button
-                            >
-                        </div>
-                    </li>
-                    <li />{/each}
-            </ul>
-        </div>
+    {#if network == chains[originNetwork].name}
+        {#if balancesresult.length > 0}
+            <div class="tokenlist">
+                <ul>
+                    {#each balancesresult as token}
+                        <li>
+                            <div class="token">
+                                <img src="{chains[originNetwork].img}" alt="{chains[originNetwork].shortName}" /><span
+                                    >{token.token_id}</span
+                                ><button
+                                    class="btn"
+                                    on:click={() => burn(token.token_id)}
+                                    >Migrate</button
+                                >
+                            </div>
+                        </li>
+                        <li />{/each}
+                </ul>
+            </div>
+        {:else}
+            <div>No tokens to migrate...</div>
+        {/if}
     {:else}
-        <div>No tokens to migrate...</div>
+        <div>Switch to {chains[originNetwork].name}</div>
     {/if}
 {/if}
 
