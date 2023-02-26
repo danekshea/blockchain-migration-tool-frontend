@@ -21,7 +21,7 @@
             console.log(address);
             connectstatus = "Connected";
             let networktemp: number = await window.ethereum.networkVersion;
-            network = chains[networktemp][0];
+            network = chains[networktemp].name;
             console.log(network);
         } else {
             connectstatus = "Metamask is not installed.";
