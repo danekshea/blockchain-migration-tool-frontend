@@ -48,3 +48,75 @@ export const destinationScannerURL = (tokenid: string) => {
         return "";
     }
 }
+
+export const originScannerURL = (collectionAddress: string, tokenid: string, network: number) => {
+    if (network == 1) {
+        return "https://etherscan.io/nft/" + collectionAddress + "/" + tokenid;
+    }
+    else if(network == 5) {
+        return "https://goerli.etherscan.io/nft/" + collectionAddress + "/" + tokenid;
+    }
+    else if(network == 56) {
+        return "https://bscscan.com/token/" + collectionAddress + "?a=" + tokenid;
+    }
+    else if(network == 97) {
+        return "https://testnet.bscscan.com/token/" + collectionAddress + "?a=" + tokenid;
+    }
+    else if(network == 137) {
+        return "https://polygonscan.com/token/" + collectionAddress + "?a=" + tokenid;
+    }
+    else if(network == 250) {
+        return "https://ftmscan.com/token/" + collectionAddress + "?a=" + tokenid;
+    }
+    else if(network == 42161) {
+        return "https://arbiscan.io/token/" + collectionAddress + "?a=" + tokenid;
+    }
+    else if(network == 43114) {
+        return "https://snowtrace.io/token/" + collectionAddress + "?a=" + tokenid;
+    }
+    else if(network == 80001) {
+        return "https://mumbai.polygonscan.com/token/" + collectionAddress + "?a=" + tokenid;
+    }
+    else if(network == 11155111) { 
+        return "https://sepolia.etherscan.io/token/" + collectionAddress + "?a=" + tokenid;
+    }
+    else {
+        return "";
+    }
+}
+
+export const addressScannerURL = (address:string, network:number) => {
+    if (network == 1) {
+        return "https://etherscan.io/address/" + address;
+    }
+    else if(network == 5) {
+        return "https://goerli.etherscan.io/address/" + address;
+    }
+    else if(network == 56) {
+        return "https://bscscan.com/address/" + address;
+    }
+    else if(network == 97) {
+        return "https://testnet.bscscan.com/address/" + address;
+    }
+    else if(network == 137) {
+        return "https://polygonscan.com/address/" + address;
+    }
+    else if(network == 250) {
+        return "https://ftmscan.com/address/" + address;
+    }
+    else if(network == 42161) {
+        return "https://arbiscan.io/address/" + address;
+    }
+    else if(network == 43114) {
+        return "https://snowtrace.io/address/" + address;
+    }
+    else if(network == 80001) {
+        return "https://mumbai.polygonscan.com/address/" + address;
+    }
+    else if(network == 11155111) { 
+        return "https://sepolia.etherscan.io/address/" + address;
+    }
+    else {
+        return "";
+    }
+}
