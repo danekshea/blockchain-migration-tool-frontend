@@ -5,21 +5,18 @@
   import { originNetwork, chains } from "../utils/blockchain";
 
   let address: string = "";
-  let network: string = "";
   let chainid: number = 0;
 </script>
 
-<!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous"> -->
 <div>
   <h1>IMX Migration Tool</h1>
   <div class="grid-container">
     <div class="container-row">
-      <Navigation bind:address bind:network bind:chainid />
+      <Navigation bind:address bind:chainid />
     </div>
     {#if address && chainid != 0}
       {#if chainid == originNetwork}
-        <div class="container-column"><Origin {address} {network} {chainid}/></div>
+        <div class="container-column"><Origin {address} {chainid}/></div>
         <div class="container-column"><Destination {address} /></div>
       {:else}
         <div class="container-row">

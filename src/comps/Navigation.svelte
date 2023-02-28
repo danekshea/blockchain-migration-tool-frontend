@@ -2,17 +2,8 @@
     import { chains } from "../utils/blockchain";
 
     export let connectstatus: string = "Connect";
-    export let network: string = "";
     export let address: string = "";
     export let chainid: number = 0;
-
-    // import { createEventDispatcher } from 'svelte';
-
-    // const dispatch = createEventDispatcher();
-
-    // function connect() {
-	// 	dispatch('connect');
-	// }
 
     async function connect() {
         if (typeof window.ethereum !== "undefined") {
@@ -21,10 +12,7 @@
             address = address[0];
             console.log(address);
             connectstatus = "Connected";
-            let networktemp: number = await window.ethereum.networkVersion;
-            network = chains[networktemp].name;
-            chainid = networktemp;
-            console.log(network);
+            chainid = await window.ethereum.networkVersion;
         } else {
             connectstatus = "Metamask is not installed.";
         }
@@ -33,9 +21,9 @@
 <nav>
     <div class="container">
         <button class="btn" id="connect-btn" on:click={connect}>{connectstatus}</button>
-        {#if address}
+        {#if address && chainid}
             <h4>Address: {address}</h4>
-            <h4>Network: {network} {chainid}</h4>
+            <h4>Network: {chains[chainid].name}</h4>
             <hr>
         {/if}
     </div>

@@ -3,7 +3,6 @@
     import { moralisAPIkey, originMoralisURL, originCollectionAddress, chains, originNetwork } from "../utils/blockchain";
 
     export let address: string = "";
-    export let network: string = "";
     export let chainid: number = 0;
 
     let balancesresult: any = [];
