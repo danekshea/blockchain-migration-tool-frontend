@@ -42,3 +42,4 @@ You can preview the production build with `npm run preview`.
 
 ## TO-DO
 * Strongly type everything
+* Fix import error on Ethereum import
