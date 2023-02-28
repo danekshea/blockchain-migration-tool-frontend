@@ -2,9 +2,11 @@
   import Navigation from "../comps/Navigation.svelte";
   import Origin from "../comps/Origin.svelte";
   import Destination from "../comps/Destination.svelte";
+  import { originNetwork, chains } from "../utils/blockchain";
 
   let address: string = "";
   let network: string = "";
+  let chainid: number = 0;
 </script>
 
 <!-- <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
@@ -13,10 +15,18 @@
   <h1>IMX Migration Tool</h1>
   <div class="grid-container">
     <div class="container-row">
-      <Navigation bind:address bind:network />
+      <Navigation bind:address bind:network bind:chainid />
     </div>
-    <div class="container-column"><Origin {address} {network}/></div>
-    <div class="container-column"><Destination {address} /></div>
+    {#if address && chainid != 0}
+      {#if chainid == originNetwork}
+        <div class="container-column"><Origin {address} {network} {chainid}/></div>
+        <div class="container-column"><Destination {address} /></div>
+      {:else}
+        <div class="container-row">
+          <h4>This migration tool is for migrating assets from {chains[originNetwork].name} but you're connected to {chains[chainid].name}</h4>
+        </div>
+      {/if}
+    {/if}
   </div>
   <a target="_blank" rel="noreferrer" class="logo" href="https://immutable.com">
     <img src="logo.svg" alt="Immutable X logo" />
