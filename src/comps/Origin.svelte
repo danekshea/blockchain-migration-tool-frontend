@@ -63,7 +63,7 @@
     }
 </script>
 {#if address}
-    {#if network == chains[originNetwork].name}
+    {#if chainid == originNetwork}
         {#if balancesresult.length > 0}
             <div class="tokenlist">
                 <ul>
