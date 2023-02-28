@@ -62,30 +62,26 @@
     }
 </script>
 {#if address}
-    {#if chainid == originNetwork}
-        {#if balancesresult.length > 0}
-            <div class="tokenlist">
-                <ul>
-                    {#each balancesresult as token}
-                        <li>
-                            <div class="token">
-                                <img src="{chains[originNetwork].img}" alt="{chains[originNetwork].shortName}" /><span
-                                    >{token.token_id}</span
-                                ><button
-                                    class="btn"
-                                    on:click={() => burn(token.token_id)}
-                                    >Migrate</button
-                                >
-                            </div>
-                        </li>
-                        <li />{/each}
-                </ul>
-            </div>
-        {:else}
-            <div>No tokens to migrate...</div>
-        {/if}
+    {#if balancesresult.length > 0}
+        <div class="tokenlist">
+            <ul>
+                {#each balancesresult as token}
+                    <li>
+                        <div class="token">
+                            <img src="{chains[originNetwork].img}" alt="{chains[originNetwork].shortName}" /><span
+                                >{token.token_id}</span
+                            ><button
+                                class="btn"
+                                on:click={() => burn(token.token_id)}
+                                >Migrate</button
+                            >
+                        </div>
+                    </li>
+                    <li />{/each}
+            </ul>
+        </div>
     {:else}
-        <div>Switch to {chains[originNetwork].name}</div>
+        <div>No tokens to migrate...</div>
     {/if}
 {/if}
 
