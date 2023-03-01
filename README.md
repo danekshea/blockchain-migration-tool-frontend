@@ -1,18 +1,10 @@
-# create-svelte
+## Introduction
+This is the frontend for the migration tool to go from EVM chains to Immutable X. The backend is located here: https://github.com/danekshea/blockchain-migration-tool.
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/master/packages/create-svelte).
+The frontend application is programmed in Svelte and simply burns a token on the EVM chain and displays the resulting token fetches on both the origin chain and the destination chain. The app uses Moralis.
 
-## Creating a project
-
-If you're seeing this, you've probably already done this step. Congrats!
-
-```bash
-# create a new project in the current directory
-npm create svelte@latest
-
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+## Configuration
+* Set all the environment variables including the contract ABI located in Origin.svelte
 
 ## Developing
 
@@ -36,9 +28,6 @@ npm run build
 You can preview the production build with `npm run preview`.
 
 > To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
-
-## Configuration
-* Set all the environment variables including the contract ABI located in Origin.svelte
 
 ## TO-DO
 * Strongly type everything

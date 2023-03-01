@@ -32,25 +32,31 @@
     $: if (address) {
         getDestinationTokenBalancesRegular(address);
     }
+
+    const tokensPromise = getDestinationTokenBalances(address);
 </script>
 
 <div class="tokenlist">
-    {#if address}
-        <ul>
-            {#each balancesresult as token}
-                <li>
-                    <div class="token">
-                        <img src="imx.png" alt="imx">
-                        {#if destinationScannerURL(token.token_id)}
-                            <a href="{destinationScannerURL(token.token_id)}" target="_blank" rel="noreferrer">{token.token_id}</a>
-                        {:else}
-                            {token.token_id}
-                        {/if}
-                    </div>
-                </li>
-            {/each}
-        </ul>
-    {/if}
+    {#await tokensPromise}
+        <div>Loading...</div>
+    {:then tokens}
+        {#if address}
+            <ul>
+                {#each balancesresult as token}
+                    <li>
+                        <div class="token">
+                            <img src="imx.png" alt="imx">
+                            {#if destinationScannerURL(token.token_id)}
+                                <a href="{destinationScannerURL(token.token_id)}" target="_blank" rel="noreferrer">{token.token_id}</a>
+                            {:else}
+                                {token.token_id}
+                            {/if}
+                        </div>
+                    </li>
+                {/each}
+            </ul>
+        {/if}
+    {/await}
 </div>
 
 <style>
