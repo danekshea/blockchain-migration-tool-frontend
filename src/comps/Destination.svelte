@@ -38,7 +38,7 @@
 
 <div class="tokenlist">
     {#await tokensPromise}
-        <div>Loading...</div>
+        <div>Loading tokens from destination chain...</div>
     {:then tokens}
         {#if address}
             <ul>

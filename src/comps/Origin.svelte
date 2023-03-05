@@ -52,7 +52,7 @@
     const tokensPromise = getOriginTokenBalances(address);
 </script>
 {#await tokensPromise}
-    <div>Loading...</div>
+    <div>Loading tokens from origin chain...</div>
 {:then tokens}
 {#if address}
     {#if balancesresult.length > 0}
@@ -74,7 +74,7 @@
             </ul>
         </div>
     {:else}
-        <div>No tokens to migrate...</div>
+        <div>No tokens to migrate from origin chain...</div>
     {/if}
 {/if}
 {/await}

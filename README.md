@@ -1,7 +1,15 @@
 ## Introduction
 This is the frontend for the migration tool to go from EVM chains to Immutable X. The backend is located here: https://github.com/danekshea/blockchain-migration-tool.
 
-The frontend application is programmed in Svelte and simply burns a token on the EVM chain and displays the resulting token fetches on both the origin chain and the destination chain. The app uses Moralis.
+The frontend application is programmed in Svelte and simply burns a token on the EVM chain and displays the resulting token fetches on both the origin chain and the destination chain. The app uses Moralis as a node.
+
+The following EVM origin chains are supported:
+* Arbitrum
+* Avalanche C-chain
+* BNB
+* ETH L1
+* Fantom
+* Polygon PoS
 
 ## Configuration
 * Set all the environment variables including the contract ABI located in Origin.svelte
