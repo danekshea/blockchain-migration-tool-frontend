@@ -4,8 +4,8 @@
   import Destination from "../comps/Destination.svelte";
   import { originNetwork, chains } from "../utils/blockchain";
 
-  let address: string = "";
-  let chainid: number = 0;
+  let address = "";
+  let chainid = 0;
 </script>
 
 <div>

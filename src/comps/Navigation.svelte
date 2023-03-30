@@ -1,9 +1,9 @@
 <script lang="ts">
     import { chains } from "../utils/blockchain";
 
-    export let connectstatus: string = "Connect";
-    export let address: string = "";
-    export let chainid: number = 0;
+    export let connectstatus = "Connect";
+    export let address = "";
+    export let chainid = 0;
 
     async function connect() {
         if (typeof window.ethereum !== "undefined") {
