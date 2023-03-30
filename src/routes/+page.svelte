@@ -9,7 +9,7 @@
 </script>
 
 <div>
-  <h1>IMX Migration Tool</h1>
+  <h1>IMX Migration Tooltester</h1>
   <div class="grid-container">
     <div class="container-row">
       <Navigation bind:address bind:chainid />
