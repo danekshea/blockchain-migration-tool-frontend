@@ -1,9 +1,10 @@
 <script lang="ts">
-    import { chains } from "../utils/blockchain";
+    import { chains, originNetwork } from "../utils/blockchain";
 
     export let connectstatus = "Connect";
     export let address = "";
     export let chainid = 0;
+    let network = "";
 
     async function connect() {
         if (typeof window.ethereum !== "undefined") {
@@ -11,8 +12,13 @@
             address = await ethereum.request({ method: "eth_requestAccounts" });
             address = address[0];
             console.log(address);
-            connectstatus = "Connected";
             chainid = await window.ethereum.networkVersion;
+            console.log(chainid);
+            if(chainid != originNetwork) {
+                connectstatus = "Wrong network";
+            } else {
+                connectstatus = "Connected";
+            }
         } else {
             connectstatus = "Metamask is not installed.";
         }
@@ -23,7 +29,7 @@
         <button class="btn" id="connect-btn" on:click={connect}>{connectstatus}</button>
         {#if address && chainid}
             <h4>Address: {address}</h4>
-            <h4>Network: {chains[chainid].name}</h4>
+            <h4>Network: {network}</h4>
             <hr>
         {/if}
     </div>

@@ -6,31 +6,6 @@
     let balancesresult = [];
     export let address = "";
 
-    async function getDestinationTokenBalances(address) {
-        console.log("Getting destination token balances...");
-        const balances = await fetch(
-            destinationIMXURL(address),
-            {
-                method: "GET",
-                headers: {
-                    "Content-Type": "application/json",
-                },
-            }
-        );
-        const balancesjson = await balances.json();
-        balancesresult = balancesjson.result;
-        balancesresult = balancesresult.sort((a, b) => {
-            if (a.token_id < b.token_id) {
-                return -1;
-            }
-        });
-    }
-
-    async function getDestinationTokenBalancesRegular(address) {
-        const interval = setInterval(() => getDestinationTokenBalances(address), 5000);
-        return () => clearInterval(interval);
-    }
-
     $: if (address) {
         getDestinationTokenBalancesRegular(address);
     }

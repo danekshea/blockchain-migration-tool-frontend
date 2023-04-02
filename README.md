@@ -43,4 +43,5 @@ You can preview the production build with `npm run preview`.
 
 ## TO-DO
 * Strongly type everything
+* Add recursion to fetching of balances, right now it's only reading the first page
 * Fix import error on Ethereum import
