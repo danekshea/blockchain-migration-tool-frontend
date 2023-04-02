@@ -1,41 +1,36 @@
 <script lang="ts">
-// @ts-nocheck
-
-    import { destinationIMXURL, destinationScannerURL } from "../utils/blockchain";
-
-    let balancesresult = [];
+    import { getIMXTokenBalances } from "../utils/api";
+    import { destinationScannerURL } from "../utils/blockchain";
+  
     export let address = "";
-
+  
+    let tokensPromise;
+  
     $: if (address) {
-        getDestinationTokenBalancesRegular(address);
+      tokensPromise = getIMXTokenBalances(address);
     }
-
-    const tokensPromise = getDestinationTokenBalances(address);
-</script>
-
-<div class="tokenlist">
+  </script>
+  
+  <div class="tokenlist">
     {#await tokensPromise}
-        <div>Loading tokens from destination chain...</div>
+      <div>Loading tokens from destination chain...</div>
     {:then tokens}
-        {#if address}
-            <ul>
-                {#each balancesresult as token}
-                    <li>
-                        <div class="token">
-                            <img src="imx.png" alt="imx">
-                            {#if destinationScannerURL(token.token_id)}
-                                <a href="{destinationScannerURL(token.token_id)}" target="_blank" rel="noreferrer">{token.token_id}</a>
-                            {:else}
-                                {token.token_id}
-                            {/if}
-                        </div>
-                    </li>
-                {/each}
-            </ul>
-        {/if}
+        <ul>
+          {#each tokens as token}
+            <li>
+              <div class="token">
+                <img src="imx.png" alt="imx">
+                {#if destinationScannerURL(token.token_id)}
+                  <a href="{destinationScannerURL(token.token_id)}" target="_blank" rel="noreferrer">{token.token_id}</a>
+                {:else}
+                  {token.token_id}
+                {/if}
+              </div>
+            </li>
+          {/each}
+        </ul>
     {/await}
-</div>
-
+  </div>
 <style>
     .tokenlist {
         max-width: 1040px;

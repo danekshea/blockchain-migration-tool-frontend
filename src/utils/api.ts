@@ -2,7 +2,7 @@ import axios, { AxiosResponse } from 'axios';
 import { destinationIMXURL } from "./blockchain.js";
 import { IMXAssetResponse } from "../types";
 
-export async function getDestinationTokenBalances(address: string): Promise<IMXAssetResponse[]> {
+export async function getIMXTokenBalances(address: string): Promise<IMXAssetResponse[]> {
     console.log("Getting destination token balances...");
     //axios request to the URL of address
     const response: AxiosResponse = await axios.get(destinationIMXURL(address), {
@@ -34,13 +34,11 @@ export async function getDestinationTokenBalances(address: string): Promise<IMXA
     return balancesresultarray;
 }
 
-export async function getDestinationTokenBalancesRegular(address: string) {
+export async function getIMXTokenBalancesRegular(address: string) {
     const interval = setInterval(() => getDestinationTokenBalances(address), 5000);
     return () => clearInterval(interval);
 }
 
 async function main() {
-    console.log(await getDestinationTokenBalances("0x42c2d104C05A9889d79Cdcd82F69D389ea24Db9a"));
-    //getDestinationTokenBalances("0x42c2d104C05A9889d79Cdcd82F69D389ea24Db9a");
 }
 main();
