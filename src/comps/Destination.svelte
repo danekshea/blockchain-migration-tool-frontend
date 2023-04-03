@@ -59,19 +59,4 @@
     width: 20px;
     margin-right: 2px;
   }
-  .btn {
-    background: #17b5cb;
-    padding: 0.2rem;
-    width: 50px;
-    color: white;
-    border: 0px solid transparent;
-    border-radius: 6px;
-    font-weight: 500;
-    font-size: 0.8rem;
-    cursor: pointer;
-    transition: background-color 0.25s, color 0.25s, border-color 0.25s;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-  }
 </style>

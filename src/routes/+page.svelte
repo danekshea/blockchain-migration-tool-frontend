@@ -6,8 +6,6 @@
 
   let address = "";
   let chainid = 0;
-
-
 </script>
 
 <div>
