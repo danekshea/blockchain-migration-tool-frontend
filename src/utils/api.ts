@@ -71,6 +71,7 @@ export async function getEVMTokenBalances(address: string, collectionAddress:str
     return balancesresultarray;
 }
 
+//Pull the assets into from either an EVM or StarkEx and then convert them into a standardized asset array for further use
 export async function getAssetTokenBalances(address:string, collectionAddress:string, network:number): Promise<Asset[]> {
   if (network== 5000 || 5001) {
     const imxassets = await getIMXTokenBalances(address, collectionAddress, network);
@@ -81,13 +82,8 @@ export async function getAssetTokenBalances(address:string, collectionAddress:st
   }
 }
 
-export async function getAssetTokenBalancesRegular(address: string, chain_id:number) {
-  const interval = setInterval(() => getAssetTokenBalances(address, chain_id), 5000);
+//Function for regularly polling assets for use in the origin and destination components
+export async function getAssetTokenBalancesRegular(address: string, collectionAddress:string, network:number) {
+  const interval = setInterval(() => getAssetTokenBalances(address, collectionAddress, network), 5000);
   return () => clearInterval(interval);
 }
-
-async function main() {
-  console.log(await getEVMTokenBalances("0x42c2d104C05A9889d79Cdcd82F69D389ea24Db9a", 137));
-  //console.log(await getIMXTokenBalances("0x42c2d104C05A9889d79Cdcd82F69D389ea24Db9a", 5001));
-}
-main();
