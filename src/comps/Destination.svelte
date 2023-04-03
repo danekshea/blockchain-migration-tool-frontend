@@ -1,12 +1,14 @@
 <script lang="ts">
   import { destinationTokenStore } from "../stores/tokens";
-  import { tokenScannerURL } from "../utils/blockchain";
+  import { chains, tokenScannerURL } from "../utils/blockchain";
 
   export let address = "";
+  export let chain_id;
+  export let collectionAddress = "";
 
   $: if (address) {
-    destinationTokenStore.fetchTokens(address);
-    destinationTokenStore.startInterval(address);
+    destinationTokenStore.fetchTokens(address, chain_id);
+    destinationTokenStore.startInterval(address, chain_id);
   } else {
     destinationTokenStore.stopInterval();
   }
@@ -17,9 +19,9 @@
     {#each $destinationTokenStore as token}
       <li>
         <div class="token">
-          <img src="imx.png" alt="imx" />
-          {#if tokenScannerURL("0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3", token.token_id, 5001)}
-            <a href={tokenScannerURL("0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3", token.token_id, 5001)} target="_blank" rel="noreferrer">{token.token_id}</a>
+          <img src="{chains[chain_id].img}" alt="{chains[chain_id].shortName}" />
+          {#if tokenScannerURL(collectionAddress, token.token_id, chain_id)}
+            <a href={tokenScannerURL(collectionAddress, token.token_id, chain_id)} target="_blank" rel="noreferrer">{token.token_id}</a>
           {:else}
             {token.token_id}
           {/if}

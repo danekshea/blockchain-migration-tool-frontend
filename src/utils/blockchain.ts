@@ -22,8 +22,8 @@ export const chains: { [key: number]: chainDetails } = {
     97: {name: "BNB Chain Testnet", shortName: "bnb testnet", img: "bnb.svg"},
     137: {name: "Polygon", shortName: "polygon", img: "polygon.svg"},
     250: {name: "Fantom", shortName: "fantom", img: "fantom.svg"},
-    5000: {name: "ImmutableX", shortName: "imx", img: "imx.svg"},
-    5001: {name: "ImmutableX Testnet", shortName: "imx testnet", img: "imx.svg"},
+    5000: {name: "ImmutableX", shortName: "imx", img: "imx.png"},
+    5001: {name: "ImmutableX Testnet", shortName: "imx testnet", img: "imx.png"},
     42161: {name: "Arbitrum", shortName: "arbitrum", img: "arbitrum.svg"},
     43114: {name: "Avalanche", shortName: "avalanche", img: "avalanche.png"},
     //polygon testnet

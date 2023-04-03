@@ -5,16 +5,16 @@ import { getAssetTokenBalances } from '../utils/api';
 function createDestinationTokenStore() {
   const { subscribe, set } = writable([]);
 
-  async function fetchTokens(address: string) {
-    const tokens = await getAssetTokenBalances(address, 5001);
+  async function fetchTokens(address: string, chain_id) {
+    const tokens = await getAssetTokenBalances(address, chain_id);
     set(tokens);
   }
 
   let interval;
 
-  function startInterval(address: string) {
+  function startInterval(address: string, chain_id:number) {
     if (interval) clearInterval(interval);
-    interval = setInterval(() => fetchTokens(address), 5000);
+    interval = setInterval(() => fetchTokens(address, chain_id), chain_id);
   }
 
   function stopInterval() {
@@ -28,5 +28,7 @@ function createDestinationTokenStore() {
     stopInterval,
   };
 }
+
+export const originTokenStore = createDestinationTokenStore();
 
 export const destinationTokenStore = createDestinationTokenStore();
