@@ -1,12 +1,12 @@
 // customTokenStore.ts
 import { writable } from 'svelte/store';
-import { getIMXTokenBalances } from '../utils/api';
+import { getAssetTokenBalances } from '../utils/api';
 
 function createDestinationTokenStore() {
   const { subscribe, set } = writable([]);
 
   async function fetchTokens(address: string) {
-    const tokens = await getIMXTokenBalances(address);
+    const tokens = await getAssetTokenBalances(address, 5001);
     set(tokens);
   }
 

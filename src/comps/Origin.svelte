@@ -2,12 +2,12 @@
 // @ts-nocheck
 
     import { ethers } from "ethers";
-    import { moralisAPIkey, originMoralisURL, originCollectionAddress, chains, originNetwork, abi } from "../utils/blockchain";
+    import { originCollectionAddress, chains, originNetwork, abi } from "../utils/blockchain";
 
     export let address = "";
 
     let balancesresult = [];
-    
+
     async function burn(tokenID) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();

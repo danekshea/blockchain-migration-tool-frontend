@@ -3,7 +3,7 @@ import { IMXURL, MoralisURL, moralisAPIkey } from "./blockchain.js";
 import { IMXAsset, Asset, EVMAsset } from "../types";
 import { convertEVMAssetsToAsset, convertIMXAssetsToAsset } from "./utils.js";
 
-export async function getIMXTokenBalances(address: string, chain_id: number): Promise<Asset[]> {
+export async function getIMXTokenBalances(address: string, chain_id: number): Promise<IMXAsset[]> {
   if (chain_id == 5000 || 5001) {
     //Request the token balances from the IMX API for the given address
     console.log("Getting IMX token balances...");
@@ -32,15 +32,13 @@ export async function getIMXTokenBalances(address: string, chain_id: number): Pr
     }));
     balancesresultarray.sort((a: IMXAsset, b: IMXAsset) => a.token_id - b.token_id);
 
-    const assets = convertIMXAssetsToAsset(balancesresultarray, chain_id);
-
-    return assets;
+    return balancesresultarray;
   } else {
     throw new Error("Invalid chain_id. Please provide a valid chain_id (5000 or 5001).");
   }
 }
 
-export async function getEVMTokenBalances(address: string, chain_id): Promise<Asset[]> {
+export async function getEVMTokenBalances(address: string, chain_id): Promise<EVMAsset[]> {
   console.log("Getting EVM token balances...");
   const response: AxiosResponse = await axios.get(MoralisURL(address, chain_id), {
     headers: {
@@ -70,19 +68,23 @@ export async function getEVMTokenBalances(address: string, chain_id): Promise<As
         possible_spam: element.possible_spam,
         }));
     balancesresultarray.sort((a: EVMAsset, b: EVMAsset) => a.token_id - b.token_id);
-    const assets = convertEVMAssetsToAsset(balancesresultarray, chain_id);
-    return assets;
+    return balancesresultarray;
 }
 
-export async function getIMXTokenBalancesRegular(address: string, chain_id:number) {
-  const interval = setInterval(() => getIMXTokenBalances(address, chain_id), 5000);
+export async function getAssetTokenBalances(address: string, chain_id: number): Promise<Asset[]> {
+  if (chain_id == 5000 || 5001) {
+    const imxassets = await getIMXTokenBalances(address, chain_id);
+    return convertIMXAssetsToAsset(imxassets, chain_id);
+  } else {
+    const evmassets = await getEVMTokenBalances(address, chain_id);
+    return convertEVMAssetsToAsset(evmassets, chain_id);
+  }
+}
+
+export async function getAssetTokenBalancesRegular(address: string, chain_id:number) {
+  const interval = setInterval(() => getAssetTokenBalances(address, chain_id), 5000);
   return () => clearInterval(interval);
 }
-
-export async function getEVMTokenBalancesRegular(address: string, chain_id:number) {
-    const interval = setInterval(() => getEVMTokenBalances(address, chain_id), 5000);
-    return () => clearInterval(interval);
-  }
 
 async function main() {
   console.log(await getEVMTokenBalances("0x42c2d104C05A9889d79Cdcd82F69D389ea24Db9a", 137));

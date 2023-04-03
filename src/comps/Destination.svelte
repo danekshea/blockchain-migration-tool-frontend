@@ -1,6 +1,6 @@
 <script lang="ts">
   import { destinationTokenStore } from "../stores/tokens";
-  import { destinationScannerURL } from "../utils/blockchain";
+  import { tokenScannerURL } from "../utils/blockchain";
 
   export let address = "";
 
@@ -18,8 +18,8 @@
       <li>
         <div class="token">
           <img src="imx.png" alt="imx" />
-          {#if destinationScannerURL(token.token_id)}
-            <a href={destinationScannerURL(token.token_id)} target="_blank" rel="noreferrer">{token.token_id}</a>
+          {#if tokenScannerURL("0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3", token.token_id, 5001)}
+            <a href={tokenScannerURL("0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3", token.token_id, 5001)} target="_blank" rel="noreferrer">{token.token_id}</a>
           {:else}
             {token.token_id}
           {/if}

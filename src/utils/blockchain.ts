@@ -5,7 +5,7 @@ export const originNetwork:number = 137;
 export const originCollectionAddress: string =  "0x0551b1C0B01928Ab22A565b58427FF0176De883C";
 
 //Use the chain IDs to define to which IMX network to use. Ethereum=IMX mainnet, Goerli=IMX sandbox
-export const destinationNetwork:number = 5;
+export const destinationNetwork:number = 5001;
 const destinationCollectionAddress: string = "0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3";
 
 export const moralisAPIkey:string = "C9P2Jz8zrkYra6N6CSAGb49lw7WBbjbYfBOdO8AEAid8tnym6k3GhbV7kJc16wS3";

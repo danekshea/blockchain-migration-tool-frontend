@@ -16,7 +16,7 @@
     </div>
     {#if address && chainid != 0}
       {#if chainid == originNetwork}
-        <div class="container-column"><Origin {address}/></div>
+        <!-- <div class="container-column"><Origin {address}/></div> -->
         <div class="container-column"><Destination {address} /></div>
       {:else}
         <div class="container-row">
