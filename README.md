@@ -12,7 +12,7 @@ The following EVM origin chains are supported:
 * Polygon PoS
 
 ## Configuration
-* Set all the environment variables including the contract ABI located in Origin.svelte
+* Set all the environment variables in blockchain.ts including the ABI
 
 ## Developing
 
