@@ -1,12 +1,12 @@
 import { chainDetails } from "../types";
 
 //Network the frontend should be on, use the chain id
-export const originNetwork:number = 137;
+export const originChain:number = 137;
 export const originCollectionAddress: string =  "0x0551b1C0B01928Ab22A565b58427FF0176De883C";
 
 //Use the chain IDs to define to which IMX network to use. Ethereum=IMX mainnet, Goerli=IMX sandbox
-export const destinationNetwork:number = 5001;
-const destinationCollectionAddress: string = "0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3";
+export const destinationChain:number = 5001;
+export const destinationCollectionAddress: string = "0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3";
 
 export const moralisAPIkey:string = "C9P2Jz8zrkYra6N6CSAGb49lw7WBbjbYfBOdO8AEAid8tnym6k3GhbV7kJc16wS3";
 
@@ -32,16 +32,16 @@ export const chains: { [key: number]: chainDetails } = {
 }
 
 //Construct the GET request to the Moralis API
-export const MoralisURL = (address:string, chain_id) => { 
-    return "https://deep-index.moralis.io/api/v2/" + address + "/nft?chain=" + chains[chain_id].shortName + "&format=decimal&token_addresses%5B0%5D=" + originCollectionAddress;
+export const MoralisURL = (address:string, collectionAddress:string, network:number) => { 
+    return "https://deep-index.moralis.io/api/v2/" + address + "/nft?chain=" + chains[network].shortName + "&format=decimal&token_addresses%5B0%5D=" + collectionAddress;
 }
 
-export const IMXURL = (address:string, chain_id) => {
-    if(chain_id == 5000) {
-        return "https://api.x.immutable.com/v1/assets?user=" + address + "&collection=" + destinationCollectionAddress;
+export const IMXURL = (address:string, collectionAddress:string, network:number) => {
+    if(network == 5000) {
+        return "https://api.x.immutable.com/v1/assets?user=" + address + "&collection=" + collectionAddress;
     }
-    else if(chain_id == 5001) {
-        return "https://api.sandbox.x.immutable.com/v1/assets?user=" + address + "&collection=" + destinationCollectionAddress;
+    else if(network == 5001) {
+        return "https://api.sandbox.x.immutable.com/v1/assets?user=" + address + "&collection=" + collectionAddress;
     }
     else {
         throw new Error("Invalid chain_id. Please provide a valid chain_id (5000 or 5001).");

@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { chains, originNetwork } from "../utils/blockchain";
+    import { originChain } from "../utils/blockchain";
 
     export let connectstatus = "Connect";
     export let address = "";
@@ -14,7 +14,7 @@
             console.log(address);
             chainid = await window.ethereum.networkVersion;
             console.log(chainid);
-            if(chainid != originNetwork) {
+            if(chainid != originChain) {
                 connectstatus = "Wrong network";
             } else {
                 connectstatus = "Connected";

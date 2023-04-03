@@ -2,19 +2,19 @@
 import { writable } from 'svelte/store';
 import { getAssetTokenBalances } from '../utils/api';
 
-function createDestinationTokenStore() {
+function createTokenStore() {
   const { subscribe, set } = writable([]);
 
-  async function fetchTokens(address: string, chain_id) {
-    const tokens = await getAssetTokenBalances(address, chain_id);
+  async function fetchTokens(address: string, collectionAddress:string, network:number) {
+    const tokens = await getAssetTokenBalances(address, collectionAddress, network);
     set(tokens);
   }
 
   let interval;
 
-  function startInterval(address: string, chain_id:number) {
+  function startInterval(address: string, collectionAddress:string, network:number) {
     if (interval) clearInterval(interval);
-    interval = setInterval(() => fetchTokens(address, chain_id), chain_id);
+    interval = setInterval(() => fetchTokens(address, collectionAddress, network), network);
   }
 
   function stopInterval() {
@@ -29,6 +29,6 @@ function createDestinationTokenStore() {
   };
 }
 
-export const originTokenStore = createDestinationTokenStore();
+export const originTokenStore = createTokenStore();
 
-export const destinationTokenStore = createDestinationTokenStore();
+export const destinationTokenStore = createTokenStore();

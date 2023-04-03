@@ -3,11 +3,11 @@ import { IMXURL, MoralisURL, moralisAPIkey } from "./blockchain.js";
 import { IMXAsset, Asset, EVMAsset } from "../types";
 import { convertEVMAssetsToAsset, convertIMXAssetsToAsset } from "./utils.js";
 
-export async function getIMXTokenBalances(address: string, chain_id: number): Promise<IMXAsset[]> {
-  if (chain_id == 5000 || 5001) {
+export async function getIMXTokenBalances(address: string, collectionAddress: string, network: number): Promise<IMXAsset[]> {
+  if (network == 5000 || 5001) {
     //Request the token balances from the IMX API for the given address
     console.log("Getting IMX token balances...");
-    const response: AxiosResponse = await axios.get(IMXURL(address, chain_id), {
+    const response: AxiosResponse = await axios.get(IMXURL(address, collectionAddress, network), {
       headers: {
         "Content-Type": "application/json",
       },
@@ -38,9 +38,9 @@ export async function getIMXTokenBalances(address: string, chain_id: number): Pr
   }
 }
 
-export async function getEVMTokenBalances(address: string, chain_id): Promise<EVMAsset[]> {
+export async function getEVMTokenBalances(address: string, collectionAddress:string, network:number): Promise<EVMAsset[]> {
   console.log("Getting EVM token balances...");
-  const response: AxiosResponse = await axios.get(MoralisURL(address, chain_id), {
+  const response: AxiosResponse = await axios.get(MoralisURL(address, collectionAddress, network), {
     headers: {
       accept: "application/json",
       "X-API-Key": moralisAPIkey,
@@ -71,13 +71,13 @@ export async function getEVMTokenBalances(address: string, chain_id): Promise<EV
     return balancesresultarray;
 }
 
-export async function getAssetTokenBalances(address: string, chain_id: number): Promise<Asset[]> {
-  if (chain_id == 5000 || 5001) {
-    const imxassets = await getIMXTokenBalances(address, chain_id);
-    return convertIMXAssetsToAsset(imxassets, chain_id);
+export async function getAssetTokenBalances(address:string, collectionAddress:string, network:number): Promise<Asset[]> {
+  if (network== 5000 || 5001) {
+    const imxassets = await getIMXTokenBalances(address, collectionAddress, network);
+    return convertIMXAssetsToAsset(imxassets, network);
   } else {
-    const evmassets = await getEVMTokenBalances(address, chain_id);
-    return convertEVMAssetsToAsset(evmassets, chain_id);
+    const evmassets = await getEVMTokenBalances(address, collectionAddress, network);
+    return convertEVMAssetsToAsset(evmassets, network);
   }
 }
 

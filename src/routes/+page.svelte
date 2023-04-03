@@ -2,13 +2,12 @@
   import Navigation from "../comps/Navigation.svelte";
   import Origin from "../comps/Origin.svelte";
   import Destination from "../comps/Destination.svelte";
-  import { originNetwork, chains } from "../utils/blockchain";
+  import { originChain, originCollectionAddress, destinationChain, destinationCollectionAddress, chains } from "../utils/blockchain";
 
   let address = "";
   let chainid = 0;
 
-  let chain_id = 5001;
-  let collectionAddress = "0x82633202e463d7a39e6c03a843f0f4e83b7e9aa3";
+
 </script>
 
 <div>
@@ -18,12 +17,12 @@
       <Navigation bind:address bind:chainid />
     </div>
     {#if address && chainid != 0}
-      {#if chainid == originNetwork}
-        <!-- <div class="container-column"><Origin {address}/></div> -->
-        <div class="container-column"><Destination {address} {collectionAddress} {chain_id} /></div>
+      {#if chainid == originChain}
+        <div class="container-column"><Origin {address} {originCollectionAddress} {originChain} /></div>
+        <div class="container-column"><Destination {address} {destinationCollectionAddress} {destinationChain} /></div>
       {:else}
         <div class="container-row">
-          <h4>This migration tool is for migrating assets from {chains[originNetwork].name} but you're connected to {chains[chainid].name}</h4>
+          <h4>This migration tool is for migrating assets from {chains[originChain].name} but you're connected to {chains[chainid].name}</h4>
         </div>
       {/if}
     {/if}

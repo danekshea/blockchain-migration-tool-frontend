@@ -2,11 +2,12 @@
 // @ts-nocheck
 
     import { ethers } from "ethers";
-    import { originCollectionAddress, chains, originNetwork, abi } from "../utils/blockchain";
+    import { originTokenStore } from "../stores/tokens";
+    import { chains, abi, tokenScannerURL } from "../utils/blockchain";
 
     export let address = "";
-
-    let balancesresult = [];
+    export let originCollectionAddress = "";
+    export let originChain;
 
     async function burn(tokenID) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -17,17 +18,36 @@
             abi,
             signer
         );
-
         const result = await contract.burn(tokenID);
     }
 
     $: if (address) {
-        getOriginTokenBalancesRegular(address);
+        originTokenStore.fetchTokens(address, originChain);
+        originTokenStore.startInterval(address, originChain);
+    } 
+    else {
+        originTokenStore.stopInterval();
     }
-
-    const tokensPromise = getOriginTokenBalances(address);
 </script>
-{#await tokensPromise}
+
+
+<div class="tokenlist">
+    <ul>
+      {#each $originTokenStore as token}
+        <li>
+          <div class="token">
+            <img src="{chains[originChain].img}" alt="{chains[originChain].shortName}" />
+            {#if tokenScannerURL(originCollectionAddress, token.token_id, originChain)}
+              <a href={tokenScannerURL(originCollectionAddress, token.token_id, originChain)} target="_blank" rel="noreferrer">{token.token_id}</a>
+            {:else}
+              {token.token_id}
+            {/if}<button class="btn" on:click={() => burn(token.token_id)}>Migrate</button>
+          </div>
+        </li>
+      {/each}
+    </ul>
+  </div>
+<!-- {#await tokensPromise}
     <div>Loading tokens from origin chain...</div>
 {:then tokens}
 {#if address}
@@ -39,10 +59,6 @@
                         <div class="token">
                             <img src="{chains[originNetwork].img}" alt="{chains[originNetwork].shortName}" /><span
                                 >{token.token_id}</span
-                            ><button
-                                class="btn"
-                                on:click={() => burn(token.token_id)}
-                                >Migrate</button
                             >
                         </div>
                     </li>
@@ -53,7 +69,7 @@
         <div>No tokens to migrate from origin chain...</div>
     {/if}
 {/if}
-{/await}
+{/await} -->
 
 <style>
     .tokenlist {
