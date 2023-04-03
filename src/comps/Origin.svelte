@@ -7,33 +7,7 @@
     export let address = "";
 
     let balancesresult = [];
-
-    async function getOriginTokenBalances(address) {
-        console.log("Getting origin token balances...");
-        const balances = await fetch(
-                originMoralisURL(address),
-            {
-                headers: {
-                    accept: "application/json",
-                    "X-API-Key":
-                        moralisAPIkey,
-                },
-            }
-        );
-        const balancesjson = await balances.json();
-        balancesresult = balancesjson.result;
-        balancesresult = balancesresult.sort((a, b) => {
-            if (a.token_id < b.token_id) {
-                return -1;
-            }
-        });
-    }
-
-    async function getOriginTokenBalancesRegular(address) {
-        const interval = setInterval(() => getOriginTokenBalances(address), 5000);
-        return () => clearInterval(interval);
-    }
-
+    
     async function burn(tokenID) {
         const provider = new ethers.providers.Web3Provider(window.ethereum);
         const signer = provider.getSigner();
