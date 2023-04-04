@@ -4,7 +4,7 @@ import { IMXAsset, Asset, EVMAsset } from "../types";
 import { convertEVMAssetsToAsset, convertIMXAssetsToAsset } from "./utils.js";
 
 export async function getIMXTokenBalances(address: string, collectionAddress: string, network: number): Promise<IMXAsset[]> {
-  if (network == 5000 || 5001) {
+  if (network === 5000 || network === 5001) {
     //Request the token balances from the IMX API for the given address
     console.log("Getting IMX token balances...");
     const response: AxiosResponse = await axios.get(IMXURL(address, collectionAddress, network), {
@@ -73,17 +73,11 @@ export async function getEVMTokenBalances(address: string, collectionAddress:str
 
 //Pull the assets into from either an EVM or StarkEx and then convert them into a standardized asset array for further use
 export async function getAssetTokenBalances(address:string, collectionAddress:string, network:number): Promise<Asset[]> {
-  if (network== 5000 || 5001) {
+  if (network === 5000 || network === 5001) {
     const imxassets = await getIMXTokenBalances(address, collectionAddress, network);
     return convertIMXAssetsToAsset(imxassets, network);
   } else {
     const evmassets = await getEVMTokenBalances(address, collectionAddress, network);
     return convertEVMAssetsToAsset(evmassets, network);
   }
-}
-
-//Function for regularly polling assets for use in the origin and destination components
-export async function getAssetTokenBalancesRegular(address: string, collectionAddress:string, network:number) {
-  const interval = setInterval(() => getAssetTokenBalances(address, collectionAddress, network), 5000);
-  return () => clearInterval(interval);
 }

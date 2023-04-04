@@ -22,8 +22,8 @@
     }
 
     $: if (address) {
-        originTokenStore.fetchTokens(address, originChain);
-        originTokenStore.startInterval(address, originChain);
+        originTokenStore.fetchTokens(address, originCollectionAddress, originChain);
+        originTokenStore.startInterval(address, originCollectionAddress, originChain);
     } 
     else {
         originTokenStore.stopInterval();
@@ -47,30 +47,6 @@
       {/each}
     </ul>
   </div>
-<!-- {#await tokensPromise}
-    <div>Loading tokens from origin chain...</div>
-{:then tokens}
-{#if address}
-    {#if balancesresult.length > 0}
-        <div class="tokenlist">
-            <ul>
-                {#each balancesresult as token}
-                    <li>
-                        <div class="token">
-                            <img src="{chains[originNetwork].img}" alt="{chains[originNetwork].shortName}" /><span
-                                >{token.token_id}</span
-                            >
-                        </div>
-                    </li>
-                    <li />{/each}
-            </ul>
-        </div>
-    {:else}
-        <div>No tokens to migrate from origin chain...</div>
-    {/if}
-{/if}
-{/await} -->
-
 <style>
     .tokenlist {
         max-width: 1040px;

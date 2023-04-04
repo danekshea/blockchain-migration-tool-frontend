@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { originChain } from "../utils/blockchain";
+    import { originChain, chains } from "../utils/blockchain";
 
     export let connectstatus = "Connect";
     export let address = "";
@@ -11,9 +11,9 @@
             console.log("MetaMask is installed!");
             address = await ethereum.request({ method: "eth_requestAccounts" });
             address = address[0];
-            console.log(address);
+            console.log("Metamask connected to " + address);
             chainid = await window.ethereum.networkVersion;
-            console.log(chainid);
+            console.log("Metamask network: " + chainid);
             if(chainid != originChain) {
                 connectstatus = "Wrong network";
             } else {
@@ -29,7 +29,7 @@
         <button class="btn" id="connect-btn" on:click={connect}>{connectstatus}</button>
         {#if address && chainid}
             <h4>Address: {address}</h4>
-            <h4>Network: {network}</h4>
+            <h4>Network: {chains[chainid].name}</h4>
             <hr>
         {/if}
     </div>

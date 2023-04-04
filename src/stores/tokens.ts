@@ -14,7 +14,7 @@ function createTokenStore() {
 
   function startInterval(address: string, collectionAddress:string, network:number) {
     if (interval) clearInterval(interval);
-    interval = setInterval(() => fetchTokens(address, collectionAddress, network), network);
+    interval = setInterval(() => fetchTokens(address, collectionAddress, network), 5000);
   }
 
   function stopInterval() {
