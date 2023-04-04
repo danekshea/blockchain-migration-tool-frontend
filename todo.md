@@ -16,25 +16,29 @@
 ## Completed
 - [ ] N/A
 
-### Instructions so far
-Intended user: Game collection owner who has deployed a collection on a separate chain but want to migrate their NFTs to Immutable X AND game player that wants to burn their tokens
+### Instructions for use
+Intended users: 
+- Game collection owner
+- Players that hold game's NFTs in their wallets.
 
-Intended user's flow: 
-1. Game collection owner will ask their users to burn assets that exist on a suitable chain
-2. Their users will burn their assets on that chain (using same site?)
-3. Game collection owner will create the new Immutable X ERC721 contract and deploy on Immutable X (and record its collection address)
-4. Game collection owner will connect to migration website with the wallet that owns (?) the newly deployed Immutable X contract, enters the collection address of that contract and will then see their collection's details, where the LHS lists all the burns
-5. Game collection owner will click 'migrate' for each of the tokens (individually or automated) [QUESTION: when is burn watcher used during this?]
-6. Loading bar will appear with number of tokens minted with their Immutascan txns. [NOTE: should tokens be minted to owner's wallet or directly to user?]
-7. Tokens will be minted on Immutable X (possibly directly to the user that burnt the tokens)
+### Before using these tools, please ensure these prerequisites have been met:
+- Game collection owner has previously deployed a collection on a supported chain (e.g. Polygon, BSC, Arbitrum etc.) with already minted assets and wishes to migrate those assets to IMX
+- Game collection owner has newly deployed an IMX compatible contract onto Immutable protocol mainnet which will be used to re-mint assets
+- Players have access to their NFTs in non-custodial wallets and are willing to burn them to receive newly-minted IMX NFTs
 
-#### Assumptions
-- Currently, should just be from any chain to Immutable X.
-- In the future, should be from any chain to Immutable zkEVM. Should/could also allow X <-> zkEVM migrations(?)
-- Currently, will only be tailored towards ERC721
+### Below are considerations that are out of scope for current release:
+- Players will mint their NFT to the same wallet address that burnt that asset
+- NFTs that are burnt will have the same token_id as those that are minted on IMX
+- Only ERC721s will be considered for this release (no ERC20s nor ERC1155s)
+- Only migrations to Immutable X (StarkEx) are in scope for this release
+- tokenid, different wallet address, different metadata
 
-#### Open questions
-- For Immutable zkEVM migrations, would the collection owner front the cost of the mint? What's it like on other chains when migrations occur?
+### Intended user flow
+1. Game collection owner will be provided both the frontend and the backend of this migration tool so that they can deploy as-is (after changing .env), or create something similar using this as foundation
+2. Game collection owner will deploy migration tool and notify players to use the tool
+3. Players will enter website and connect their wallet
+4. Players will see their assets on previous chain and then migrate assets to Immutable
+5. Players will successfully see their new assets on Immutable with links to their Immutascan transactions
 
 
 
