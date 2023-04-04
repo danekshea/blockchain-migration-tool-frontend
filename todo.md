@@ -1,17 +1,16 @@
 # List of things to do
 
 ## Currently working on
-- [ ] Ideal user flows
+- [ ] Instructions that explain how to use
 
 ## Working on next
 - [ ] Loading screen for after "Migrate" button is pressed
 - [ ] Show NFT image and token_id for each token on different chain
 - [ ] Footer that links to opensource code, and has other links
-- [ ] Instructions that explain how to use
+- [ ] .env file (or other) for game collection owners to modify before deployment
 
 ## Nice to haves
-- [ ] Modal pop-up to select which chain
-- [ ] Separate screen / log-in flow for the end user to burn their token (and then register on IMX)
+- [ ] N/A
 
 ## Completed
 - [ ] N/A
@@ -39,6 +38,3 @@ Intended users:
 3. Players will enter website and connect their wallet
 4. Players will see their assets on previous chain and then migrate assets to Immutable
 5. Players will successfully see their new assets on Immutable with links to their Immutascan transactions
-
-
-
