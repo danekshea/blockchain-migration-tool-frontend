@@ -4,6 +4,18 @@
 
     export let walletAddress = "";
     export let chainId = 0;
+    export let selection = false;
+
+    function confirmSelection() {
+        selection = true;
+        console.log("Selection Confirmed")
+    }
+
+    function resetSelection() {
+        selection = false;
+        console.log("Selection RESET")
+    }
+
 </script>
 
 <div class="container">
@@ -17,7 +29,8 @@
         <Grid.Col span={4}>3</Grid.Col>
     </Grid>
     <Group position="center">
-        <Button>Confirm</Button>
+        <Button on:click={confirmSelection}>Confirm</Button>
+        <Button on:click={resetSelection}>Reset</Button>
     </Group>
 
     {/if}

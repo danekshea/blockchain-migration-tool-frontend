@@ -27,8 +27,8 @@
   
     <div>
       <ConnectWallet bind:walletAddress bind:chainId />
-      <Selection bind:walletAddress bind:chainId />
-      <ConfirmBurn bind:walletAddress bind:chainId bind:selection/>
+      <Selection bind:walletAddress bind:chainId bind:selection/>
+      <ConfirmBurn bind:walletAddress bind:chainId bind:selection bind:confirmBurn/>
       <Reception bind:walletAddress bind:chainId bind:selection bind:confirmBurn/>
   
       {#if walletAddress && chainId != 0}

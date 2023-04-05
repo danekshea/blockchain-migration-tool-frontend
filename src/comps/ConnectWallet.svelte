@@ -9,6 +9,7 @@
     let network = "";
     let opened = false;
 
+    // note: this does not realise if metamask if locked
     async function connectMetamask() {
         if (window.ethereum) {
             const provider = new ethers.providers.Web3Provider(window.ethereum);
@@ -45,7 +46,7 @@
 </script>
 <div class="container">
     <h2>
-        Step 1:
+        Step 1: Connect your wallet
     </h2>
     <Modal {opened} on:close={closeWalletOptions} title="Choose your wallet">
         <!-- Modal Content -->

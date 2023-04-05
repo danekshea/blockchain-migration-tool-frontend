@@ -1,29 +1,12 @@
 <script lang="ts">
     import { originChain, chains } from "../utils/blockchain";
+    import { Button, Checkbox, CheckboxGroup, Group } from "@svelteuidev/core"
 
-    export let connectstatus = "Migrate";
     export let walletAddress = "";
     export let chainId = 0;
     export let selection = false;
-    let network = "";
+    export let confirmBurn = false;
 
-    async function connect() {
-        if (typeof window.ethereum !== "undefined") {
-            console.log("MetaMask is installed!");
-            walletAddress = await ethereum.request({ method: "eth_requestAccounts" });
-            walletAddress = walletAddress[0];
-            console.log("Metamask connected to " + walletAddress);
-            chainId = await window.ethereum.networkVersion;
-            console.log("Metamask network: " + chainId);
-            if(chainId != originChain) {
-                connectstatus = "Wrong network";
-            } else {
-                connectstatus = "Connected";
-            }
-        } else {
-            connectstatus = "Metamask is not installed.";
-        }
-    }
 </script>
 <nav>
     <div class="container">
@@ -31,24 +14,15 @@
             Step 3: Confirm and burn
         </h2>
         {#if walletAddress && chainId != 0 && selection}
-        <button class="btn" id="connect-btn" on:click={connect}>{connectstatus}</button>
+            <Checkbox label="I am willing to burn my NFTs on CHAIN_XYZ to receive my NFTs on Immutable X" />
+            <Checkbox label="I understand that I'll be receiving my NFTs on the same wallet address I am currently using" />
+        
+            <Group position="center">
+                <Button>Migrate NFTs</Button>
+            </Group>
         {/if}
     </div>
 </nav>
 <style>
-    .btn {
-        background: #17B5CB;
-        padding: 1.15rem 1rem;
-        width: 100%;
-        color: white;
-        border: 0px solid transparent;
-        border-radius: 6px;
-        font-weight: 500;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color .25s, color .25s, border-color .25s;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
+    
 </style>
