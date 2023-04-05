@@ -1,7 +1,7 @@
 <script lang="ts">
     import { originChain, chains } from "../utils/blockchain";
 
-    export let connectstatus = "Connect Wallet";
+    export let connectstatus = "Migrate";
     export let address = "";
     export let chainid = 0;
     let network = "";
@@ -27,14 +27,9 @@
 <nav>
     <div class="container">
         <p>
-            Step 1:
+            Step 3: Confirm and burn
         </p>
         <button class="btn" id="connect-btn" on:click={connect}>{connectstatus}</button>
-        {#if address && chainid}
-            <h4>Address: {address}</h4>
-            <h4>Network: {chains[chainid].name}</h4>
-            <hr>
-        {/if}
     </div>
 </nav>
 <style>

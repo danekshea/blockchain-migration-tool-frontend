@@ -3,17 +3,30 @@
   import Origin from "../comps/Origin.svelte";
   import Destination from "../comps/Destination.svelte";
   import { originChain, originCollectionAddress, destinationChain, destinationCollectionAddress, chains } from "../utils/blockchain";
+  import Selection from "../comps/Selection.svelte";
+  import Confirmation from "../comps/Confirmation.svelte";
+  import Reception from "../comps/Reception.svelte";
 
   let address = "";
   let chainid = 0;
 </script>
 
 <div>
-  <h1>IMX Migration Tool</h1>
-  <div class="grid-container">
-    <div class="container-row">
-      <Navigation bind:address bind:chainid />
-    </div>
+  <div>
+    <h1>Cross-chain Migration Tool</h1>
+    <p>
+      This tool offers intuitive NFT transfers across chains onto Immutable X. 
+      <br/>
+      It has been configured to migrate <b>COLLECTION_XYZ</b> on <b>CHAIN_XYZ</b>
+    </p>
+  </div>
+
+  <div>
+    <Navigation bind:address bind:chainid />
+    <Selection bind:address bind:chainid />
+    <Confirmation bind:address bind:chainid />
+    <Reception />
+
     {#if address && chainid != 0}
       {#if chainid == originChain}
         <div class="container-column"><Origin {address} {originCollectionAddress} {originChain} /></div>
@@ -26,24 +39,11 @@
     {/if}
   </div>
   <a target="_blank" rel="noreferrer" class="logo" href="https://immutable.com">
-    <img src="logo.svg" alt="Immutable X logo" />
+    <img src="logo-black.png" alt="Immutable X logo" />
   </a>
 </div>
 
 <style>
-  .grid-container {
-    max-width: 800px;
-    margin: auto;
-    margin-top: 1rem;
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    /* grid-gap: 20px; */
-    background: #eeeeee;
-    width: min(490px, 100vw);
-    box-shadow: 0 0 30px rgba(0, 0, 0, 0.05);
-    border-radius: 16px;
-    padding: 2.5rem 3rem;
-  }
   .container-row {
     grid-column: span 2;
   }
