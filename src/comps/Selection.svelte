@@ -1,35 +1,27 @@
 <script lang="ts">
     import { originChain, chains } from "../utils/blockchain";
-    import { Grid, Button } from '@svelteuidev/core'
+    import { Grid, Button, Group } from '@svelteuidev/core'
 
+    export let walletAddress = "";
+    export let chainId = 0;
 </script>
 
 <div class="container">
-    <p>
+    <h2>
         Step 2: Select NFTs
-    </p>
-    <Button>Burn</Button>
+    </h2>
+    {#if walletAddress && chainId != 0}
     <Grid>
         <Grid.Col span={4}>1</Grid.Col>
         <Grid.Col span={4}>2</Grid.Col>
         <Grid.Col span={4}>3</Grid.Col>
     </Grid>
+    <Group position="center">
+        <Button>Confirm</Button>
+    </Group>
+
+    {/if}
 </div>
 
 <style>
-    .btn {
-        background: #17B5CB;
-        padding: 1.15rem 1rem;
-        width: 100%;
-        color: white;
-        border: 0px solid transparent;
-        border-radius: 6px;
-        font-weight: 500;
-        font-size: 1rem;
-        cursor: pointer;
-        transition: background-color .25s, color .25s, border-color .25s;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-    }
 </style>

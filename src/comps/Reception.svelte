@@ -1,11 +1,14 @@
 <script lang="ts">
-
+  export let walletAddress = "";
+  export let chainId = 0;
+  export let selection = false;
+  export let confirmBurn = false;
 </script>
 <nav>
     <div class="container">
-        <p>
+        <h2>
             Step 4: Receive NFTs!
-        </p>
+        </h2>
     </div>
 </nav>
 <style>

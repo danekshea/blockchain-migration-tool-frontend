@@ -1,20 +1,21 @@
 <script lang="ts">
     import { originChain, chains } from "../utils/blockchain";
 
-    export let connectstatus = "Connect Wallet";
-    export let address = "";
-    export let chainid = 0;
+    export let connectstatus = "Migrate";
+    export let walletAddress = "";
+    export let chainId = 0;
+    export let selection = false;
     let network = "";
 
     async function connect() {
         if (typeof window.ethereum !== "undefined") {
             console.log("MetaMask is installed!");
-            address = await ethereum.request({ method: "eth_requestAccounts" });
-            address = address[0];
-            console.log("Metamask connected to " + address);
-            chainid = await window.ethereum.networkVersion;
-            console.log("Metamask network: " + chainid);
-            if(chainid != originChain) {
+            walletAddress = await ethereum.request({ method: "eth_requestAccounts" });
+            walletAddress = walletAddress[0];
+            console.log("Metamask connected to " + walletAddress);
+            chainId = await window.ethereum.networkVersion;
+            console.log("Metamask network: " + chainId);
+            if(chainId != originChain) {
                 connectstatus = "Wrong network";
             } else {
                 connectstatus = "Connected";
@@ -26,14 +27,11 @@
 </script>
 <nav>
     <div class="container">
-        <p>
-            Step 1:
-        </p>
+        <h2>
+            Step 3: Confirm and burn
+        </h2>
+        {#if walletAddress && chainId != 0 && selection}
         <button class="btn" id="connect-btn" on:click={connect}>{connectstatus}</button>
-        {#if address && chainid}
-            <h4>Address: {address}</h4>
-            <h4>Network: {chains[chainid].name}</h4>
-            <hr>
         {/if}
     </div>
 </nav>
