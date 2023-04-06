@@ -6,6 +6,7 @@
     export let walletConnected = false;
     export let walletAddress = "";
     export let chainId = 0;
+    export let disclaimers = [];
     let walletOptionsModal = false;
     const CONNECT_WALLET = "Connect wallet";	
     const DISCONNECT = "Disconnect wallet";	
@@ -43,6 +44,10 @@
         closeWalletOptions();
     }
 
+    function openWalletOptions() {
+        walletOptionsModal=true;
+    }
+
     function closeWalletOptions() {
         walletOptionsModal=false;
     }
@@ -52,13 +57,14 @@
         walletConnected = true;
     }
 
-    function openWalletOptions() {
-        walletOptionsModal=true;
-    }
-
-    async function disconnectWallet() {
+    function disconnectWallet() {
         walletAddress = "";
         walletConnected = false;
+    }
+
+    function resetState() {
+        disconnectWallet();
+        disclaimers = [];
     }
 
 </script>
@@ -72,17 +78,18 @@
         <Button disabled>Gamestop</Button>
         <Button disabled>WalletConnect</Button>
     </Modal>
+    {#if walletAddress && chainId}
+        <p><b>Address: </b>{walletAddress}</p>
+        <p><b>Network: </b>{chains[chainId].name}</p>
+    {/if}
     <Group position="center">
         {#if walletConnected===false}
             <Button on:click={openWalletOptions}>{`${CONNECT_WALLET}`}</Button>
         {:else}
-            <Button on:click={disconnectWallet}>{`${DISCONNECT}`}</Button>
+            <Button on:click={resetState}>{`${DISCONNECT}`}</Button>
         {/if}
     </Group>
-    {#if walletAddress && chainId}
-        <p>Address: {walletAddress}</p>
-        <p>Network: {chains[chainId].name}</p>
-    {/if}
+
 </div>
 
 <style>

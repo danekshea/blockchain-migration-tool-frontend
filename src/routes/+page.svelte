@@ -2,8 +2,8 @@
   import Origin from "../comps/Origin.svelte";
   import Destination from "../comps/Destination.svelte";
   import { originChain, originCollectionAddress, destinationChain, destinationCollectionAddress, chains } from "../utils/blockchain";
-  import Selection from "../comps/Selection.svelte";
-  import ConfirmBurn from "../comps/ConfirmBurn.svelte";
+  import SelectNFTs from "../comps/SelectNFTs.svelte";
+  import Disclaimers from "../comps/Disclaimers.svelte";
   import Reception from "../comps/Reception.svelte";
   import { SvelteUIProvider } from '@svelteuidev/core';
   import ConnectWallet from "../comps/ConnectWallet.svelte";
@@ -11,7 +11,7 @@
   let walletAddress = "";
   let chainId = 0;
   let selection = false;
-  let confirmBurn = false;
+  let disclaimers = [];
 </script>
 
 <SvelteUIProvider>
@@ -26,10 +26,10 @@
     </div>
   
     <div>
-      <ConnectWallet bind:walletAddress bind:chainId />
-      <Selection bind:walletAddress bind:chainId bind:selection/>
-      <ConfirmBurn bind:walletAddress bind:chainId bind:selection bind:confirmBurn/>
-      <Reception bind:walletAddress bind:chainId bind:selection bind:confirmBurn/>
+      <ConnectWallet bind:walletAddress bind:chainId bind:disclaimers/>
+      <Disclaimers bind:walletAddress bind:chainId bind:disclaimers/>
+      <SelectNFTs bind:walletAddress bind:chainId bind:selection bind:disclaimers/>
+      <Reception bind:walletAddress bind:chainId bind:selection bind:disclaimers/>
   
       {#if walletAddress && chainId != 0}
         {#if chainId == originChain}

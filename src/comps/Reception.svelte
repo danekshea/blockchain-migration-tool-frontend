@@ -2,7 +2,7 @@
   export let walletAddress = "";
   export let chainId = 0;
   export let selection = false;
-  export let confirmBurn = false;
+  export let disclaimers=[];
 </script>
 <nav>
     <div class="container">

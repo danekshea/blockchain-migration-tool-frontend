@@ -5,6 +5,7 @@
     export let walletAddress = "";
     export let chainId = 0;
     export let selection = false;
+    export let disclaimers=[];
 
     function confirmSelection() {
         selection = true;
@@ -20,19 +21,14 @@
 
 <div class="container">
     <h2>
-        Step 2: Select NFTs
+        Step 3: Burn NFTs
     </h2>
-    {#if walletAddress && chainId != 0}
+    {#if walletAddress && chainId != 0 && disclaimers.length === 2}
     <Grid>
-        <Grid.Col span={4}>1</Grid.Col>
-        <Grid.Col span={4}>2</Grid.Col>
-        <Grid.Col span={4}>3</Grid.Col>
+        {#each [1,2,3,4,5,6,7,8,9,10,11,12] as n}
+        <Grid.Col md={6} lg={3}>{n}</Grid.Col>
+        {/each}
     </Grid>
-    <Group position="center">
-        <Button on:click={confirmSelection}>Confirm</Button>
-        <Button on:click={resetSelection}>Reset</Button>
-    </Group>
-
     {/if}
 </div>
 
