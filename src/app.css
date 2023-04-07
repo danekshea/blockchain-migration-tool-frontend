@@ -1,0 +1,17 @@
+@tailwind base;
+@layer base {
+    h1 {
+      @apply font-sans text-2xl font-bold;
+    }
+    h2 {
+      @apply font-sans text-xl font-bold;
+    }
+    h3 {
+      @apply font-sans text-lg font-bold;
+    }
+    h4 {
+        @apply font-sans text-base font-bold;
+    }
+  }
+@tailwind components;
+@tailwind utilities;

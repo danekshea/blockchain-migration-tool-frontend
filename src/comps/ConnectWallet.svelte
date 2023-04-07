@@ -68,7 +68,7 @@
     }
 
 </script>
-<div class="container">
+<div>
     <h2>
         Step 1: Connect your wallet
     </h2>

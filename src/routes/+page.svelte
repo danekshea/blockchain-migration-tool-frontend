@@ -23,9 +23,7 @@
         <br/>
         It has been configured to migrate <b>COLLECTION_XYZ</b> on <b>CHAIN_XYZ</b>
       </p>
-    </div>
-  
-    <div>
+      
       <ConnectWallet bind:walletAddress bind:chainId bind:disclaimers/>
       <Disclaimers bind:walletAddress bind:chainId bind:disclaimers/>
       <SelectNFTs bind:walletAddress bind:chainId bind:selection bind:disclaimers/>
@@ -72,9 +70,5 @@
   .logo:hover {
     filter: saturate(100%);
     opacity: 1;
-  }
-  h1 {
-    text-align: center;
-    margin-top: 1rem;
   }
 </style>
