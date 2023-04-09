@@ -14,15 +14,16 @@
   let chainId = 0;
   let selection = false;
   let disclaimers = [];
+
+  let isDark = false;
 </script>
 
-<SvelteUIProvider>
+<SvelteUIProvider withGlobalStyles themeObserver={isDark ? 'dark' : 'light'}>
   
 
   <div>
-    
     <div>
-      <Navigation bind:walletAddress bind:chainId bind:disclaimers/>
+      <Navigation bind:walletAddress bind:chainId bind:disclaimers bind:isDark/>
       <Description/>
       <Instructions bind:walletAddress bind:chainId bind:disclaimers />
 

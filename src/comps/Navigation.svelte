@@ -1,7 +1,7 @@
 <script>
     //import Tooltip from "src/comps/Tooltip.svelte"
     import { ethers } from "ethers";
-    import { Modal, Group, Button, Menu, Text } from "@svelteuidev/core"
+    import { Modal, Group, Button, Menu, Text, Switch } from "@svelteuidev/core"
     import { originChain, chains } from "../utils/blockchain";
     import { sliceAddress } from "../utils/utils";
     import { completedSteps } from "../stores/generic";
@@ -11,9 +11,14 @@
     export let walletAddress = "";
     export let chainId = 0;
     export let disclaimers = [];
+    export let isDark = false;
     let walletOptionsModal = false;
     const CONNECT_WALLET = "Connect wallet";	
     const DISCONNECT = "Disconnect";	
+
+    function toggleTheme() {
+		isDark = !isDark;
+	}
 
     // TO FIX FUNCTION
     const copyToClipboard = (e, address) => {
@@ -105,6 +110,7 @@
         </Button>
     </Modal>
     <div class="ml-auto flex items-center p-0.5 rounded-[40px]">
+        <Switch class="p-2" size='md' onLabel="ON" offLabel="OFF" on:change={toggleTheme} />
         {#if walletConnected===false}
             <Button on:click={openWalletOptions} class="min-w-[128px]" variant="outline" color="dark" radius="xl">
                 {`${CONNECT_WALLET}`}
