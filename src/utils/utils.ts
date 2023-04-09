@@ -15,3 +15,6 @@ export const convertEVMAssetsToAsset = (evmAssets: EVMAsset[], chain_id: number)
       chain_id: chain_id
     }));
   };
+
+  export const sliceAddress = (addy, n = 6) => addy ? `${addy.slice(0, n)}...${addy.slice(n * -1)}` : ""
+

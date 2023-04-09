@@ -2,6 +2,7 @@
 
 ## Currently working on
 - [ ] Instructions that explain how to use
+- [ ] Check user is registered on IMX else, register them (note: is this backend or frontend?)
 
 ## Working on next
 - [ ] Loading screen for after "Migrate" button is pressed

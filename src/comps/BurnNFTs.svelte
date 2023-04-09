@@ -1,4 +1,5 @@
 <script lang="ts">
+    import { completedSteps } from "../stores/generic";
     import { originChain, chains } from "../utils/blockchain";
     import { Container, Grid, Button, Group, Card, Image, Text, Notification } from '@svelteuidev/core'
 
@@ -6,7 +7,9 @@
     export let chainId = 0;
     export let selection = false;
     export let disclaimers=[];
+    export let loading=true;
     let burning=false;
+    let originNFTs = [1, 2, 3];
 
     function confirmSelection() {
         selection = true;
@@ -30,44 +33,42 @@
 
     function onBurn() {
         burning=true;
+        completedSteps.set(4)
     }
 
     function onMint() {
-        burning=false
+        burning=false;
+        loading=false;
     }
 
 </script>
 
 <div class="container">
-    <h2>
-        Step 3: Burn NFTs
-    </h2>
     {#if burning===true}
     <Notification on:close={onMint} class="fixed top-1 right-1 z-10" title='Uploading data' loading>
         Please wait until your NFT is migrated before performing more burns
     </Notification>
     {/if}
-    {#if walletAddress && chainId != 0 && disclaimers.length === 2}
-    <Container>
+    <Container class="mt-5" size="xs">
         <Grid>
-            {#each [1,2,3,4,5,6] as n}
+            {#each originNFTs as n}
             <Grid.Col span={4}>
-                <Card class="group">
+                <Card radius="lg" class="group">
                     <Card.Section>
                         <!-- To change src path to NFT metadata if possible -->
-                        <Group>
+                        <Group position="center">
                             <Image
                                 src='../../nft.png'
                                 fit='contain'
                                 alt='NFT'
                             />
                             {#if burning===false}
-                            <Button class= "absolute hidden group-hover:block" variant='light' color='blue' fullSize on:click={onBurn}>
+                            <Button class= "absolute hidden group-hover:block" variant='filled' color='dark' on:click={onBurn}>
                                 Migrate
                             </Button>
                             {/if}
                         </Group>
-                        <Text weight={500}>#{n}</Text>
+                        <Text class="m-2" weight={500}>{n}</Text>
                     </Card.Section>
 
                 </Card>
@@ -75,7 +76,6 @@
             {/each}
         </Grid>
     </Container>
-    {/if}
 </div>
 
 <style>

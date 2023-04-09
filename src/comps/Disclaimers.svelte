@@ -1,6 +1,7 @@
 <script lang="ts">
+    import { completedSteps } from "../stores/generic";
     import { originChain, chains } from "../utils/blockchain";
-    import { Button, Checkbox, CheckboxGroup, Group } from "@svelteuidev/core"
+    import { Button, Checkbox, CheckboxGroup, Group, Title } from "@svelteuidev/core"
 
     export let walletAddress = "";
     export let chainId = 0;
@@ -11,15 +12,15 @@
         { label: 'I understand I will be receiving my NFTs on my current wallet address', value: 'disclaimer2' }
     ];
 
-</script>
-<div class="container">
-    <h2>
-        Step 2: Disclaimers
-    </h2>
-    {#if walletAddress && chainId != 0}
-        <CheckboxGroup items={items} bind:value={disclaimers} direction={'column'}/>
-    {/if}
+    function checkDisclaimers() {
+        if (disclaimers.length == 2) {
+            completedSteps.set(3);
+        }
+    }
 
+</script>
+<div class="mt-5">
+    <CheckboxGroup on:change={checkDisclaimers} spacing='xs' color='blue' size='sm' items={items} bind:value={disclaimers} direction={'column'}/>
 </div>
 <style>
     
