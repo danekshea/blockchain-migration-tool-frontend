@@ -4,7 +4,7 @@
   import { originChain, originCollectionAddress, destinationChain, destinationCollectionAddress, chains } from "../utils/blockchain";
   import BurnNFTs from "../comps/BurnNFTs.svelte";
   import ReceiveNFTs from "../comps/ReceiveNFTs.svelte";
-  import { SvelteUIProvider } from '@svelteuidev/core';
+  import { SvelteUIProvider, Seo } from '@svelteuidev/core';
   import ConnectWallet from "../comps/ConnectWallet.svelte";
   import Navigation from "../comps/Navigation.svelte";
   import Description from "../comps/Description.svelte";
@@ -21,6 +21,7 @@
 <SvelteUIProvider withGlobalStyles themeObserver={isDark ? 'dark' : 'light'}>
   <div>
     <div>
+      <Seo title="Immutable Migration Tool"/>
       <Navigation bind:walletAddress bind:chainId bind:disclaimers bind:isDark/>
       <Description/>
       <Instructions bind:walletAddress bind:chainId bind:disclaimers />
