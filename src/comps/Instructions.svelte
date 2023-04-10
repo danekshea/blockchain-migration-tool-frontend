@@ -1,19 +1,33 @@
-<script>
-    import { Modal, Group, Button, Title, Code, Timeline, Text } from "@svelteuidev/core"
+<script lang="ts">
+    import { Modal, Group, Button, Title, Code, Timeline, Text, ThemeIcon } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic";
     import RegisterWallet from "../comps/RegisterWallet.svelte";
     import Disclaimers from "../comps/Disclaimers.svelte";
     import BurnNFTs from "./BurnNFTs.svelte";
     import ReceiveNFTs from "./ReceiveNFTs.svelte";
+    import { Person } from 'radix-icons-svelte';
 
     export let walletAddress = "";
     export let chainId = 0;
     export let disclaimers=[];
     export let loading=true;
+
+    function bulletColour(step) {
+        if ($completedSteps >= step) {
+            return "blue"
+        } else {
+            return "gray"
+        }
+    }
 </script>
 
-<Timeline active={$completedSteps} lineWidth={5} bulletSize={20} color="green" class="p-5">
+<Timeline active={$completedSteps} lineWidth={5} bulletSize={20} color="blue" class="p-5">
     <Timeline.Item title="Connect wallet">
+        <!-- Have to have bullets as fragments to preserve colour in dark mode -->
+        <!-- Timeline doesn't work that well in dark mode -->
+        <!-- <svelte:fragment slot='bullet'>
+			<ThemeIcon size="sm" radius='xl' color={bulletColour(0)}></ThemeIcon>
+		</svelte:fragment> -->
         <Text color="dimmed">
             Please connect your wallet with NFTs on CHAIN_XYZ
         </Text>
@@ -47,7 +61,7 @@
             Wait for your NFTs to be minted directly to your wallet on Immutable X!
         </Text>
         {#if $completedSteps === 4}
-            <ReceiveNFTs bind:walletAddress bind:chainId bind:disclaimers bind:loading/>
+            <ReceiveNFTs/>
         {/if}
     </Timeline.Item>
 </Timeline>

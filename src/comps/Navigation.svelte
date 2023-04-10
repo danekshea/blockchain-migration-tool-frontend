@@ -1,7 +1,9 @@
 <script>
     //import Tooltip from "src/comps/Tooltip.svelte"
     import { ethers } from "ethers";
-    import { Modal, Group, Button, Menu, Text, Switch } from "@svelteuidev/core"
+    import { Modal, Group, Button, Menu, Text, Switch, UnstyledButton, ThemeIcon } from "@svelteuidev/core"
+    import { Moon, Sun } from 'radix-icons-svelte';
+
     import { originChain, chains } from "../utils/blockchain";
     import { sliceAddress } from "../utils/utils";
     import { completedSteps } from "../stores/generic";
@@ -99,20 +101,19 @@
     </div>
     <Modal 
         opened={walletOptionsModal} on:close={closeWalletOptions} title="Choose your wallet">
-        <Button on:click={connectMetamask} class="m-2 min-w-full" variant="outline" color="dark" radius="xl">
+        <Button on:click={connectMetamask} class="m-2 min-w-full" variant="outline" color="gray" radius="xl">
             MetaMask
         </Button>
-        <Button disabled class="m-2 min-w-full" variant="outline" color="dark" radius="xl">
+        <Button disabled class="m-2 min-w-full" variant="outline" color="gray" radius="xl">
             Gamestop
         </Button>
-        <Button disabled class="m-2 min-w-full" variant="outline" color="dark" radius="xl">
+        <Button disabled class="m-2 min-w-full" variant="outline" color="gray" radius="xl">
             WalletConnect
         </Button>
     </Modal>
     <div class="ml-auto flex items-center p-0.5 rounded-[40px]">
-        <Switch class="p-2" size='md' onLabel="ON" offLabel="OFF" on:change={toggleTheme} />
         {#if walletConnected===false}
-            <Button on:click={openWalletOptions} class="min-w-[128px]" variant="outline" color="dark" radius="xl">
+            <Button on:click={openWalletOptions} class="min-w-[128px]" variant="outline" color="gray" radius="xl">
                 {`${CONNECT_WALLET}`}
             </Button>
         {:else}
@@ -135,6 +136,19 @@
                     </Menu>
                 </Group>
             </div>
+        {/if}
+        {#if isDark === false}
+            <Button class="m-2" variant="outline" color="gray" size="lg" radius="xl" compact on:click={toggleTheme}> 
+                <ThemeIcon variant="subtle" size="xs" color="dark">
+                    <Moon />
+                </ThemeIcon>
+            </Button>
+        {:else}
+            <Button class="m-2" variant="outline" color="gray" size="lg" radius="xl" compact on:click={toggleTheme}> 
+                <ThemeIcon variant="subtle" size="xs" color="dark">
+                    <Sun />
+                </ThemeIcon>
+            </Button>
         {/if}
     </div>
 </nav>
