@@ -27,7 +27,11 @@
 
     </div>
     <a target="_blank" rel="noreferrer" class="logo" href="https://immutable.com">
-      <img src="logo-black.png" alt="Immutable X logo" />
+      {#if isDark}
+        <img src="logo-white.png" alt="Immutable X logo" />
+      {:else}
+        <img src="logo-black.png" alt="Immutable X logo" />
+      {/if}
     </a>
   </div>
   
