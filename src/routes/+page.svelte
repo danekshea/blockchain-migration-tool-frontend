@@ -19,8 +19,6 @@
 </script>
 
 <SvelteUIProvider withGlobalStyles themeObserver={isDark ? 'dark' : 'light'}>
-  
-
   <div>
     <div>
       <Navigation bind:walletAddress bind:chainId bind:disclaimers bind:isDark/>

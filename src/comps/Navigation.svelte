@@ -8,7 +8,6 @@
     import { sliceAddress } from "../utils/utils";
     import { completedSteps } from "../stores/generic";
 
-
     export let walletConnected = false;
     export let walletAddress = "";
     export let chainId = 0;
@@ -94,7 +93,7 @@
     }
 </script>
 
-<nav class="max-w-[1040px] m-auto flex items-center mt-0.5">
+<nav class="max-w-[1040px] m-auto flex items-center top-1">
     <!-- <img src="" alt="" class="logo"> -->
     <div class="p-0.5 font-bold text-xl">
         migrate<span class="text-blue">.</span>
