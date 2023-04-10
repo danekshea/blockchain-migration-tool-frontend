@@ -1,5 +1,5 @@
 <script>
-    import { Modal, Group, Button, Title, Code, Timeline, Text } from "@svelteuidev/core"
+    import { Modal, Group, Button, Title, Code, Timeline, Text, Anchor } from "@svelteuidev/core"
 </script>
 
 <div>
@@ -7,8 +7,13 @@
         Transfer your NFTs to Immutable X
     </Title>
     <div class="min-w-full items-center text-center pb-5">
-        <Code class="text-xl" color="blue">
-            Configured for COLLECTION_XYZ on CHAIN_XYZ
-        </Code>
+        <Code class="text-xl" color="blue">Configured for </Code>
+        <Anchor>
+            <Code class="text-xl" color="blue">COLLECTION_XYZ</Code>
+        </Anchor> 
+        <Code class="text-xl" color="blue">on</Code>
+        <Anchor>
+            <Code class="text-xl" color="blue">CHAIN_XYZ</Code>
+        </Anchor>
     </div>
 </div>
