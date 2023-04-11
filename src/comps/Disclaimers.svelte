@@ -16,9 +16,7 @@
     }
 
 </script>
+
 <div class="mt-5">
     <CheckboxGroup on:change={checkDisclaimers} spacing='xs' color='blue' size='sm' items={items} bind:value={disclaimers} direction={'column'}/>
 </div>
-<style>
-    
-</style>

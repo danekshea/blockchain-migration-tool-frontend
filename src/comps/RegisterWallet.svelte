@@ -1,5 +1,5 @@
 <script>
-    import {Button, Notification, Modal, Text, Anchor, Stack } from "@svelteuidev/core";
+    import { Button, Notification } from "@svelteuidev/core";
     import { completedSteps } from "../stores/generic"
     import { Check, Cross2 } from 'radix-icons-svelte';
     import { RegistrationStatus } from "../types"

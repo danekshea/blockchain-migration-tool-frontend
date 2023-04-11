@@ -1,5 +1,5 @@
 <script>
-    import {Button, Modal, Text, Anchor, Stack } from "@svelteuidev/core";
+    import { Button, Modal, Text, Anchor, Stack } from "@svelteuidev/core";
     import { RegistrationStatus } from "../types"
 
     export let registerWalletModal;
