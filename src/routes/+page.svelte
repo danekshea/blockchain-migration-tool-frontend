@@ -16,7 +16,7 @@
   <Navigation bind:walletAddress bind:chainId bind:disclaimers bind:isDark/>
   <Description/>
   <Instructions bind:walletAddress bind:chainId bind:disclaimers />
-  <Logo {isDark}/>
+  <Logo bind:isDark/>
 </SvelteUIProvider>
 
 

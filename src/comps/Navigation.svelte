@@ -7,19 +7,18 @@
     import { originChain, chains } from "../utils/blockchain";
     import { sliceAddress } from "../utils/utils";
     import { completedSteps } from "../stores/generic";
+    import LightDarkModeButton from "./LightDarkModeButton.svelte";
 
     export let walletConnected = false;
     export let walletAddress = "";
     export let chainId = 0;
     export let disclaimers = [];
-    export let isDark = false;
+    export let isDark;
     let walletOptionsModal = false;
     const CONNECT_WALLET = "Connect wallet";	
     const DISCONNECT = "Disconnect";	
 
-    function toggleTheme() {
-		isDark = !isDark;
-	}
+
 
     // TO FIX FUNCTION
     const copyToClipboard = (e, address) => {
@@ -136,19 +135,8 @@
                 </Group>
             </div>
         {/if}
-        {#if isDark === false}
-            <Button class="m-2" variant="outline" color="gray" size="lg" radius="xl" compact on:click={toggleTheme}> 
-                <ThemeIcon variant="subtle" size="xs" color="dark">
-                    <Moon />
-                </ThemeIcon>
-            </Button>
-        {:else}
-            <Button class="m-2" variant="outline" color="gray" size="lg" radius="xl" compact on:click={toggleTheme}> 
-                <ThemeIcon variant="subtle" size="xs" color="dark">
-                    <Sun />
-                </ThemeIcon>
-            </Button>
-        {/if}
+        <LightDarkModeButton bind:isDark/>
+
     </div>
 </nav>
 
