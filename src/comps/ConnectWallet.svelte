@@ -14,8 +14,6 @@
     function openWalletOptions() {
         walletOptionsModal=true;
     }
-
-
 </script>
 
 <div class="ml-auto flex items-center p-0.5 rounded-[40px]">
