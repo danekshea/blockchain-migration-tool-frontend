@@ -1,35 +1,10 @@
 <script lang="ts">
     import { completedSteps } from "../stores/generic";
-    import { originChain, chains } from "../utils/blockchain";
     import { Container, Grid, Button, Group, Card, Image, Text, Notification } from '@svelteuidev/core'
 
-    export let walletAddress = "";
-    export let chainId = 0;
-    export let selection = false;
-    export let disclaimers=[];
     export let loading=true;
     let burning=false;
     let originNFTs = [1, 2, 3];
-
-    function confirmSelection() {
-        selection = true;
-        console.log("Selection Confirmed")
-    }
-
-    function resetSelection() {
-        selection = false;
-        console.log("Selection RESET")
-    }
-
-    function onFocus() {
-        //focus = true;
-        console.log("NFT in focus")
-    }
-
-    function offFocus() {
-        //focus = false;
-        console.log("NFT in focus")
-    }
 
     function onBurn() {
         burning=true;
@@ -77,6 +52,3 @@
         </Grid>
     </Container>
 </div>
-
-<style>
-</style>
