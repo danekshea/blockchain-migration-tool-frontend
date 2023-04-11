@@ -7,7 +7,6 @@
     export let walletConnected = false;
     export let walletAddress = "";
     export let chainId = 0;
-    export let disclaimers = [];
     let walletOptionsModal = false;
     const CONNECT_WALLET = "Connect wallet";	
    
@@ -29,7 +28,7 @@
                 <Text>
                     {sliceAddress(walletAddress)}
                 </Text>
-                <WalletMenu bind:walletAddress bind:walletConnected bind:disclaimers/>
+                <WalletMenu bind:walletAddress bind:walletConnected/>
             </Group>
         </div>
     {/if}

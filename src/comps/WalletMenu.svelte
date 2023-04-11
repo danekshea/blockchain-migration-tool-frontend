@@ -4,7 +4,6 @@
 
     export let walletAddress;
     export let walletConnected;
-    export let disclaimers;
 
     // TO FIX FUNCTION
     const copyToClipboard = (e, address) => {
@@ -23,7 +22,6 @@
     function resetState() {
         disconnectWallet();
         completedSteps.set(0); // reset to initial state
-        disclaimers = [];
     }
 
 </script>

@@ -7,15 +7,14 @@
 
   let walletAddress = "";
   let chainId = 0;
-  let disclaimers = [];
   let isDark = false;
 </script>
 
 <SvelteUIProvider withGlobalStyles themeObserver={isDark ? 'dark' : 'light'}>
   <Seo title="Immutable Migration Tool"/>
-  <Navigation bind:walletAddress bind:chainId bind:disclaimers bind:isDark/>
+  <Navigation bind:walletAddress bind:chainId bind:isDark/>
   <Description/>
-  <Instructions bind:walletAddress bind:chainId bind:disclaimers />
+  <Instructions bind:walletAddress bind:chainId />
   <ImmutableLogo bind:isDark/>
 </SvelteUIProvider>
 

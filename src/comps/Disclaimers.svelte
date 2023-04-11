@@ -2,7 +2,7 @@
     import { completedSteps } from "../stores/generic";
     import { CheckboxGroup } from "@svelteuidev/core"
 
-    export let disclaimers=[];
+    let disclaimers=[];
 
     const items = [
         { label: 'I am willing to burn my NFTs on CHAIN_XYZ to receive my NFTs on Immutable X', value: 'disclaimer1' },

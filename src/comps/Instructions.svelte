@@ -8,8 +8,8 @@
 
     export let walletAddress = "";
     export let chainId = 0;
-    export let disclaimers=[];
     export let loading=true;
+    
 </script>
 
 <Timeline active={$completedSteps} lineWidth={5} bulletSize={20} color="green" class="p-5">
@@ -23,7 +23,7 @@
             Ensure your wallet is registered on Immutable X
         </Text>
         {#if $completedSteps === 1}
-            <RegisterWallet bind:walletAddress bind:chainId bind:disclaimers/>
+            <RegisterWallet bind:walletAddress bind:chainId/>
         {/if}
     </Timeline.Item>
     <Timeline.Item title="Disclaimers">
@@ -31,7 +31,7 @@
             Agree to disclaimers
         </Text>
         {#if $completedSteps === 2}
-            <Disclaimers bind:walletAddress bind:chainId bind:disclaimers/>
+            <Disclaimers bind:walletAddress bind:chainId/>
         {/if}
     </Timeline.Item>
     <Timeline.Item title="Burn NFTs">
@@ -39,7 +39,7 @@
             Individually select your NFTs to burn on CHAIN_XYZ
         </Text>
         {#if $completedSteps > 2}
-            <BurnNFTs bind:walletAddress bind:chainId bind:disclaimers bind:loading/>
+            <BurnNFTs bind:walletAddress bind:chainId bind:loading/>
         {/if}
     </Timeline.Item>
     <Timeline.Item title="Receive NFTs!">
@@ -47,7 +47,7 @@
             Wait for your NFTs to be minted directly to your wallet on Immutable X!
         </Text>
         {#if $completedSteps === 4}
-            <ReceiveNFTs bind:walletAddress bind:chainId bind:disclaimers bind:loading/>
+            <ReceiveNFTs bind:walletAddress bind:chainId bind:loading/>
         {/if}
     </Timeline.Item>
 </Timeline>
