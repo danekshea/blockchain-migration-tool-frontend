@@ -3,7 +3,7 @@
   import Navigation from "../comps/Navigation.svelte";
   import Description from "../comps/Description.svelte";
   import Instructions from "../comps/Instructions.svelte";
-  import Logo from "../comps/Logo.svelte";
+  import ImmutableLogo from "../comps/ImmutableLogo.svelte";
 
   let walletAddress = "";
   let chainId = 0;
@@ -16,7 +16,7 @@
   <Navigation bind:walletAddress bind:chainId bind:disclaimers bind:isDark/>
   <Description/>
   <Instructions bind:walletAddress bind:chainId bind:disclaimers />
-  <Logo bind:isDark/>
+  <ImmutableLogo bind:isDark/>
 </SvelteUIProvider>
 
 
