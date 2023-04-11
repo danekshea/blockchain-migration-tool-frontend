@@ -1,8 +1,8 @@
 <script>
-    import { Modal, Group, Button, Text } from "@svelteuidev/core"
+    import { Modal, Button } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic";
     import { ethers } from "ethers";
-    import { originChain, chains } from "../utils/blockchain";
+    import { originChain } from "../utils/blockchain";
 
     export let walletOptionsModal = false;
     export let walletConnected = false;

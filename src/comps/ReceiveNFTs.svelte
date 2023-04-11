@@ -1,8 +1,9 @@
 <script lang="ts">
-    import { Skeleton, Container, Grid, Card, Image, Group, Button, Text } from '@svelteuidev/core';
+    import { Skeleton, Container, Grid, Card, Image, Group, Text } from '@svelteuidev/core';
 
     export let loading=true;
 </script>
+
 <nav>
     <Container class="mt-5" size="xs">
         <Grid>
@@ -28,6 +29,3 @@
         </Grid>
     </Container>
 </nav>
-<style>
-    
-</style>
