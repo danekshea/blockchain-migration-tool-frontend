@@ -3,10 +3,6 @@
     import { completedSteps } from "../stores/generic"
     import { Check, Cross2 } from 'radix-icons-svelte';
 
-    export let walletConnected = false;
-    export let walletAddress = "";
-    export let chainId = 0;
-    export let disclaimers = [];
     let registerWalletModal = false;
 
     function openRegisterModal() {
