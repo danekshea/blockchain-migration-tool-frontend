@@ -1,10 +1,7 @@
 <script lang="ts">
     import { completedSteps } from "../stores/generic";
-    import { originChain, chains } from "../utils/blockchain";
-    import { Button, Checkbox, CheckboxGroup, Group, Title } from "@svelteuidev/core"
+    import { CheckboxGroup } from "@svelteuidev/core"
 
-    export let walletAddress = "";
-    export let chainId = 0;
     export let disclaimers=[];
 
     const items = [
