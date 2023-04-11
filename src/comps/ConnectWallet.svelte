@@ -8,7 +8,6 @@
     export let walletAddress = "";
     export let chainId = 0;
     let walletOptionsModal = false;
-    const CONNECT_WALLET = "Connect wallet";	
    
     function openWalletOptions() {
         walletOptionsModal=true;
@@ -19,7 +18,7 @@
 
     {#if walletConnected===false}
         <Button on:click={openWalletOptions} class="min-w-[128px]" variant="outline" color="gray" radius="xl">
-            {`${CONNECT_WALLET}`}
+            Connect wallet
         </Button>
         <WalletOptionsModal bind:walletOptionsModal bind:walletAddress bind:walletConnected bind:chainId/>
     {:else}
