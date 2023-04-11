@@ -3,6 +3,7 @@
   import Navigation from "../comps/Navigation.svelte";
   import Description from "../comps/Description.svelte";
   import Instructions from "../comps/Instructions.svelte";
+  import Logo from "../comps/Logo.svelte";
 
   let walletAddress = "";
   let chainId = 0;
@@ -13,43 +14,13 @@
 
 <SvelteUIProvider withGlobalStyles themeObserver={isDark ? 'dark' : 'light'}>
   <div>
-    <div>
-      <Seo title="Immutable Migration Tool"/>
-      <Navigation bind:walletAddress bind:chainId bind:disclaimers bind:isDark/>
-      <Description/>
-      <Instructions bind:walletAddress bind:chainId bind:disclaimers />
-
-    </div>
-    <a target="_blank" rel="noreferrer" class="logo" href="https://immutable.com">
-      {#if isDark}
-        <img src="logo-white.png" alt="Immutable X logo" />
-      {:else}
-        <img src="logo-black.png" alt="Immutable X logo" />
-      {/if}
-    </a>
+    <Seo title="Immutable Migration Tool"/>
+    <Navigation bind:walletAddress bind:chainId bind:disclaimers bind:isDark/>
+    <Description/>
+    <Instructions bind:walletAddress bind:chainId bind:disclaimers />
+    <Logo {isDark}/>
   </div>
   
 </SvelteUIProvider>
 
-<style>
-  .logo {
-    filter: saturate(0%);
-    opacity: 0.5;
-    width: 200px;
-    margin-left: 50%;
-    transform: translateX(-50%);
-    margin-top: 2rem;
-    transition: all 0.2s;
-    display: block;
-  }
 
-  .logo img {
-    max-width: 100%;
-    display: block;
-  }
-
-  .logo:hover {
-    filter: saturate(100%);
-    opacity: 1;
-  }
-</style>
