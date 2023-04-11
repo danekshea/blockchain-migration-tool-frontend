@@ -1,18 +1,11 @@
 <script lang="ts">
-  import Origin from "../comps/Origin.svelte";
-  import Destination from "../comps/Destination.svelte";
-  import { originChain, originCollectionAddress, destinationChain, destinationCollectionAddress, chains } from "../utils/blockchain";
-  import BurnNFTs from "../comps/BurnNFTs.svelte";
-  import ReceiveNFTs from "../comps/ReceiveNFTs.svelte";
   import { SvelteUIProvider, Seo } from '@svelteuidev/core';
-  import ConnectWallet from "../comps/ConnectWallet.svelte";
   import Navigation from "../comps/Navigation.svelte";
   import Description from "../comps/Description.svelte";
   import Instructions from "../comps/Instructions.svelte";
 
   let walletAddress = "";
   let chainId = 0;
-  let selection = false;
   let disclaimers = [];
 
   let isDark = false;
