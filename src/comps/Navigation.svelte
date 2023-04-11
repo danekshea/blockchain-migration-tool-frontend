@@ -1,8 +1,7 @@
 <script>
     //import Tooltip from "src/comps/Tooltip.svelte"
     import { ethers } from "ethers";
-    import { Modal, Group, Button, Menu, Text, Switch, UnstyledButton, ThemeIcon } from "@svelteuidev/core"
-    import { Moon, Sun } from 'radix-icons-svelte';
+    import { Modal, Group, Button, Menu, Text } from "@svelteuidev/core"
 
     import { originChain, chains } from "../utils/blockchain";
     import { sliceAddress } from "../utils/utils";
