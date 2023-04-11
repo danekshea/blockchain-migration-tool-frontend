@@ -8,8 +8,8 @@
 
     export let walletAddress = "";
     export let chainId = 0;
-    export let loading=true;
-    
+    //export let loading=true;
+
 </script>
 
 <Timeline active={$completedSteps} lineWidth={5} bulletSize={20} color="green" class="p-5">
@@ -39,7 +39,7 @@
             Individually select your NFTs to burn on CHAIN_XYZ
         </Text>
         {#if $completedSteps > 2}
-            <BurnNFTs bind:walletAddress bind:chainId bind:loading/>
+            <BurnNFTs bind:walletAddress bind:chainId/>
         {/if}
     </Timeline.Item>
     <Timeline.Item title="Receive NFTs!">
@@ -47,7 +47,7 @@
             Wait for your NFTs to be minted directly to your wallet on Immutable X!
         </Text>
         {#if $completedSteps === 4}
-            <ReceiveNFTs bind:walletAddress bind:chainId bind:loading/>
+            <ReceiveNFTs bind:walletAddress bind:chainId/>
         {/if}
     </Timeline.Item>
 </Timeline>

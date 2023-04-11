@@ -1,31 +1,11 @@
 <script lang="ts">
-    import { Skeleton, Container, Grid, Card, Image, Group, Text } from '@svelteuidev/core';
+    // import { IMXAsset } from '../types'
+    import NFTDisplay from './NFTDisplay.svelte';
 
-    export let loading=true;
+    let loading = true;
+    // need to change this to IMX NFT or EVM NFT
+    const nfts = [1];
+    const ncols = 4;
 </script>
 
-<nav>
-    <Container class="mt-5" size="xs">
-        <Grid>
-            {#each [1] as n}
-            <Grid.Col span={4}>
-                <Skeleton visible={loading}>
-                    <Card radius="lg" class="group">
-                        <Card.Section>
-                            <!-- To change src path to NFT metadata if possible -->
-                            <Group position="center">
-                                <Image
-                                    src='../../nft.png'
-                                    fit='contain'
-                                    alt='NFT'
-                                />
-                            </Group>
-                            <Text class="m-2" weight={500}>{n}</Text>
-                        </Card.Section>
-                    </Card>
-                </Skeleton>
-            </Grid.Col>
-            {/each}
-        </Grid>
-    </Container>
-</nav>
+<NFTDisplay ncols={ncols} nfts={nfts} loading={loading} burning={false} showSkeletons={true} showBurnButton={false}/>
