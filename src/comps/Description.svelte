@@ -1,5 +1,5 @@
 <script>
-    import { Modal, Group, Button, Title, Code, Timeline, Text, Anchor } from "@svelteuidev/core"
+    import { Title, Code, Anchor } from "@svelteuidev/core"
 </script>
 
 <div>
