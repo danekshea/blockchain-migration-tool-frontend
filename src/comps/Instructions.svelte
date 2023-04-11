@@ -1,5 +1,5 @@
 <script>
-    import { Modal, Group, Button, Title, Code, Timeline, Text } from "@svelteuidev/core"
+    import { Timeline, Text } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic";
     import RegisterWallet from "../comps/RegisterWallet.svelte";
     import Disclaimers from "../comps/Disclaimers.svelte";
