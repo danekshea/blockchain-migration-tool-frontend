@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Menu, Text } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic"
 

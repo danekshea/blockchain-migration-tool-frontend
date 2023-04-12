@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Timeline, Text } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic";
     import RegisterWallet from "../comps/RegisterWallet.svelte";
@@ -6,8 +6,8 @@
     import NFTDisplayBurn from "../comps/NFTDisplayBurn.svelte";
     import NFTDisplayReceive from "../comps/NFTDisplayReceive.svelte";
 
-    export let walletAddress = "";
-    export let chainId = 0;
+    // export let walletAddress = "";
+    // export let chainId = 0;
     //export let loading=true;
 
 </script>
@@ -23,7 +23,7 @@
             Ensure your wallet is registered on Immutable X
         </Text>
         {#if $completedSteps === 1}
-            <RegisterWallet bind:walletAddress bind:chainId/>
+            <RegisterWallet/>
         {/if}
     </Timeline.Item>
     <Timeline.Item title="Disclaimers">
@@ -31,7 +31,7 @@
             Agree to disclaimers
         </Text>
         {#if $completedSteps === 2}
-            <Disclaimers bind:walletAddress bind:chainId/>
+            <Disclaimers/>
         {/if}
     </Timeline.Item>
     <Timeline.Item title="Burn NFTs">
@@ -39,7 +39,7 @@
             Individually select your NFTs to burn on CHAIN_XYZ
         </Text>
         {#if $completedSteps > 2}
-            <NFTDisplayBurn bind:walletAddress bind:chainId/>
+            <NFTDisplayBurn/>
         {/if}
     </Timeline.Item>
     <Timeline.Item title="Receive NFTs!">
@@ -47,7 +47,7 @@
             Wait for your NFTs to be minted directly to your wallet on Immutable X!
         </Text>
         {#if $completedSteps === 4}
-            <NFTDisplayReceive bind:walletAddress bind:chainId/>
+            <NFTDisplayReceive/>
         {/if}
     </Timeline.Item>
 </Timeline>

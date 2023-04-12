@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Button, Modal, Text, Anchor, Stack } from "@svelteuidev/core";
     import { RegistrationStatus } from "../types"
 

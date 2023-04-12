@@ -3,7 +3,6 @@
     import NFTDisplay from './NFTDisplay.svelte';
     import { NFTDisplayCategory } from "../types"
 
-
     let loading = true;
     // need to change this to IMX NFT or EVM NFT
     const nfts = [1];

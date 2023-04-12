@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Button, ThemeIcon } from "@svelteuidev/core"
     import { Sun, Moon } from "radix-icons-svelte"
 

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Button, Notification } from "@svelteuidev/core";
     import { completedSteps } from "../stores/generic"
     import { Check, Cross2 } from 'radix-icons-svelte';

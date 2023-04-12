@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Container, Grid, Button, Group, Card, Image, Text, Notification } from '@svelteuidev/core'
     export let burning;
 

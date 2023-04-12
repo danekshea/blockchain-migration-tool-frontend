@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Skeleton, Card, Image, Group, Text, Button } from '@svelteuidev/core';
     import { completedSteps } from "../stores/generic";
     import { NFTDisplayCategory } from "../types"

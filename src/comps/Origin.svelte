@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 // @ts-nocheck
 
     import { ethers } from "ethers";
