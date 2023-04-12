@@ -3,8 +3,8 @@
     import { completedSteps } from "../stores/generic";
     import RegisterWallet from "../comps/RegisterWallet.svelte";
     import Disclaimers from "../comps/Disclaimers.svelte";
-    import BurnNFTs from "./BurnNFTs.svelte";
-    import ReceiveNFTs from "./ReceiveNFTs.svelte";
+    import NFTDisplayBurn from "../comps/NFTDisplayBurn.svelte";
+    import NFTDisplayReceive from "../comps/NFTDisplayReceive.svelte";
 
     export let walletAddress = "";
     export let chainId = 0;
@@ -39,7 +39,7 @@
             Individually select your NFTs to burn on CHAIN_XYZ
         </Text>
         {#if $completedSteps > 2}
-            <BurnNFTs bind:walletAddress bind:chainId/>
+            <NFTDisplayBurn bind:walletAddress bind:chainId/>
         {/if}
     </Timeline.Item>
     <Timeline.Item title="Receive NFTs!">
@@ -47,7 +47,7 @@
             Wait for your NFTs to be minted directly to your wallet on Immutable X!
         </Text>
         {#if $completedSteps === 4}
-            <ReceiveNFTs bind:walletAddress bind:chainId/>
+            <NFTDisplayReceive bind:walletAddress bind:chainId/>
         {/if}
     </Timeline.Item>
 </Timeline>

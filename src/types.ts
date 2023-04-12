@@ -55,3 +55,8 @@ export const RegistrationStatus = {
   Registering: 3,
   Registered: 4
 };
+
+export const NFTDisplayCategory = {
+  Burning: 0,
+  Receiving: 1
+}

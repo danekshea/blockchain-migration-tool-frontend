@@ -5,10 +5,8 @@
 
     export let ncols;
     export let nfts;
-    export let loading;
+    let loading;
     export let burning;
-    export let showSkeletons;
-    export let showBurnButton;
     export let category; // can either be 'burn' or 'receive'
 
 </script>
@@ -17,14 +15,7 @@
     <Grid>
         {#each nfts as nft}
             <Grid.Col span={ncols}>
-
-                {#if showSkeletons === true}
-                    <Skeleton visible={loading} radius="lg">
-                        <NFTCard nft={nft} burning={burning}/>
-                    </Skeleton>
-                {:else}
-                    <NFTCard nft={nft} bind:burning showBurnButton={showBurnButton}/>
-                {/if}
+                <NFTCard nft={nft} bind:burning category={category} />
             </Grid.Col>
         {/each}
     </Grid>

@@ -4,7 +4,6 @@
 
     function onMint() {
         burning=false;
-        loading=false;
     }
 </script>
 
