@@ -14,7 +14,7 @@
 </script>
 
 <Skeleton radius="lg" visible={category !== NFTDisplayCategory.Burning}>
-    <Card radius="lg" class="group">
+    <Card shadow='lg' radius="lg" class="group">
         <Card.Section>
             <!-- To change src path to NFT metadata if possible -->
             <Group position="center">
