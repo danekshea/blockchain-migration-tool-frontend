@@ -2,7 +2,7 @@
     import { Group, Button, Text } from "@svelteuidev/core"
     import { sliceAddress } from "../utils/utils";
     import WalletMenu from "./WalletMenu.svelte";
-    import WalletOptionsModal from "./WalletOptionsModal.svelte";
+    import ConnectWalletModal from "./ConnectWalletModal.svelte";
 
     export let walletConnected = false;
     export let walletAddress = "";
@@ -20,7 +20,7 @@
         <Button on:click={openWalletOptions} class="min-w-[128px]" variant="outline" color="gray" radius="xl">
             Connect wallet
         </Button>
-        <WalletOptionsModal bind:walletOptionsModal bind:walletAddress bind:walletConnected bind:chainId/>
+        <ConnectWalletModal bind:walletOptionsModal bind:walletAddress bind:walletConnected bind:chainId/>
     {:else}
         <div>
             <Group spacing="xs">
