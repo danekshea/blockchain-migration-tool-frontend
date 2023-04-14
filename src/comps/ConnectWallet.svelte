@@ -1,8 +1,7 @@
 <script lang="ts">
-    import { Group, Button, Text } from "@svelteuidev/core"
-    import { sliceAddress } from "../utils/utils";
+    import { Button } from "@svelteuidev/core"
     import WalletMenu from "./WalletMenu.svelte";
-    import WalletOptionsModal from "./WalletOptionsModal.svelte";
+    import ConnectWalletModal from "./ConnectWalletModal.svelte";
 
     export let walletConnected = false;
     export let walletAddress = "";
@@ -14,21 +13,14 @@
     }
 </script>
 
-<div class="ml-auto flex items-center p-0.5 rounded-[40px]">
+<ConnectWalletModal bind:walletOptionsModal bind:walletAddress bind:walletConnected bind:chainId/>
 
+<div class="ml-auto flex items-center p-0.5 rounded-[40px]">
     {#if walletConnected===false}
         <Button on:click={openWalletOptions} class="min-w-[128px]" variant="outline" color="gray" radius="xl">
             Connect wallet
         </Button>
-        <WalletOptionsModal bind:walletOptionsModal bind:walletAddress bind:walletConnected bind:chainId/>
     {:else}
-        <div>
-            <Group spacing="xs">
-                <Text>
-                    {sliceAddress(walletAddress)}
-                </Text>
-                <WalletMenu bind:walletAddress bind:walletConnected/>
-            </Group>
-        </div>
+        <WalletMenu bind:walletAddress bind:walletConnected/>
     {/if}
 </div>

@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
     import { Modal, Button } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic";
     import { ethers } from "ethers";
