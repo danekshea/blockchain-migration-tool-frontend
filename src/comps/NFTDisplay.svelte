@@ -1,11 +1,9 @@
 <script lang="ts">
-    import { Skeleton, Grid, Card, Image, Group, Text, Container, Button } from '@svelteuidev/core';
-    import { completedSteps } from "../stores/generic";
+    import { Grid, Container } from '@svelteuidev/core';
     import NFTCard from "./NFTCard.svelte";
 
     export let ncols;
     export let nfts;
-    let loading;
     export let burning;
     export let category; // can either be 'burn' or 'receive'
 

@@ -1,16 +1,12 @@
 <script lang="ts">
     import { Skeleton, Card, Image, Group, Text, Button } from '@svelteuidev/core';
-    import { completedSteps } from "../stores/generic";
+    import BurnButton from './BurnButton.svelte'
     import { NFTDisplayCategory } from "../types"
 
     export let nft;
     export let burning;
     export let category;
 
-    function onBurn() {
-        burning=true;
-        completedSteps.set(4)
-    }
 </script>
 
 <Skeleton radius="lg" visible={category !== NFTDisplayCategory.Burning}>
@@ -23,11 +19,7 @@
                     fit='contain'
                     alt='NFT'
                 />
-                {#if category === NFTDisplayCategory.Burning && burning === false}
-                    <Button class= "absolute hidden group-hover:block" variant='filled' color='dark' on:click={onBurn}>
-                        Migrate
-                    </Button>
-                {/if}
+                <BurnButton category={category} bind:burning />
             </Group>
             <Text class="m-2" weight={500}>{nft}</Text>
         </Card.Section>
