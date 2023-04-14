@@ -1,16 +1,14 @@
 <script lang="ts">
-    import { Menu, Text } from "@svelteuidev/core"
+    import { Menu, Text, Button } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic"
+    import { sliceAddress } from "../utils/utils";
 
     export let walletAddress;
     export let walletConnected;
 
-    // TO FIX FUNCTION
-    const copyToClipboard = (e, address) => {
-        if(!address) return
-        navigator.clipboard.writeText(address)
-        e.target.innerText = "Copied to clipboard!"
-        setTimeout(() => e.target.innerText = "Copy address", 1000)
+    const copyToClipboard = (walletAddress) => {
+        if(!walletAddress) return
+        navigator.clipboard.writeText(walletAddress)
     }
 
     function disconnectWallet() {
@@ -23,17 +21,19 @@
         disconnectWallet();
         completedSteps.set(0); // reset to initial state
     }
-
 </script>
 
-<Menu trigger='hover' delay={500}>
-    <Menu.Item on:click={copyToClipboard}>
-        <Text>
+<Menu trigger='hover' delay={250}>
+    <Button slot="control" variant="subtle" color="dark" radius="xl">
+        {sliceAddress(walletAddress)}
+    </Button>
+    <Menu.Item on:click={() => copyToClipboard(walletAddress)}>
+        <Text size="sm">
             Copy address
         </Text>
     </Menu.Item>
     <Menu.Item on:click={resetState}>
-        <Text>
+        <Text size="sm">
             Disconnect wallet
         </Text>
     </Menu.Item>
