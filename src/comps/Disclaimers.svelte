@@ -14,7 +14,6 @@
             completedSteps.set(3);
         }
     }
-
 </script>
 
 <div class="mt-5">

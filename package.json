@@ -31,6 +31,8 @@
   },
   "type": "module",
   "dependencies": {
+    "@imtbl/core-sdk": "^1.0.1",
+    "@imtbl/core-sdk-deterministic-stark": "npm:@imtbl/core-sdk@^0.7.0",
     "@sveltejs/adapter-static": "^2.0.1",
     "@svelteuidev/composables": "^0.11.1",
     "@svelteuidev/core": "^0.11.1",
