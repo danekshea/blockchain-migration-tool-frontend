@@ -1,5 +1,5 @@
 <script lang="ts">
-    import { Modal, Button } from "@svelteuidev/core"
+    import { Modal, Button, Image, Group, Text } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic";
     import { ethers } from "ethers";
     import { originChain } from "../utils/blockchain";
@@ -55,14 +55,29 @@
 
 </script>
 
-<Modal opened={walletOptionsModal} on:close={closeWalletOptions} title="Choose your wallet">
-    <Button on:click={connectMetamask} class="m-2 min-w-full" variant="outline" color="gray" radius="xl">
-        MetaMask
+<Modal opened={walletOptionsModal} on:close={closeWalletOptions} title="Choose your wallet" class="justify-items-center">
+    <Button on:click={connectMetamask} class="my-2 min-w-full justify-start" variant="outline" color="gray" radius="lg" size="md">
+        <Group spacing="xs">
+            <Image height={28} src={"/metamask.png"} alt='Metamask' />
+            <Text size="sm">
+                MetaMask
+            </Text>
+        </Group>
     </Button>
-    <Button disabled class="m-2 min-w-full" variant="outline" color="gray" radius="xl">
-        Gamestop
+    <Button disabled class="my-2 min-w-full justify-start" variant="outline" color="gray" radius="lg" size="md">
+        <Group spacing="xs">
+            <Image height={28} src={"/gamestop.png"} alt='Gamestop' />
+            <Text size="sm">
+                Gamestop
+            </Text>
+        </Group>    
     </Button>
-    <Button disabled class="m-2 min-w-full" variant="outline" color="gray" radius="xl">
-        WalletConnect
+    <Button disabled class="my-2 min-w-full justify-start" variant="outline" color="gray" radius="lg" size="md">
+        <Group spacing="xs">
+            <Image height={28} src={"/walletconnect.png"} alt='Wallet Connect' />
+            <Text size="sm">
+                Wallet Connect
+            </Text>
+        </Group>   
     </Button>
 </Modal>

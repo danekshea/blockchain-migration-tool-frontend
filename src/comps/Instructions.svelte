@@ -6,8 +6,8 @@
     import NFTDisplayBurn from "../comps/NFTDisplayBurn.svelte";
     import NFTDisplayReceive from "../comps/NFTDisplayReceive.svelte";
 
-    // export let walletAddress = "";
-    // export let chainId = 0;
+    export let walletAddress = "";
+    export let chainId = 0;
     //export let loading=true;
 
 </script>

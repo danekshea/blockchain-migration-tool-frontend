@@ -1,7 +1,8 @@
 <script lang="ts">
-    import { Menu, Text, Button } from "@svelteuidev/core"
+    import { Menu, Text, Button, ThemeIcon, Group } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic"
     import { sliceAddress } from "../utils/utils";
+    import { Copy, Exit } from "radix-icons-svelte"
 
     export let walletAddress;
     export let walletConnected;
@@ -28,13 +29,23 @@
         {sliceAddress(walletAddress)}
     </Button>
     <Menu.Item on:click={() => copyToClipboard(walletAddress)}>
-        <Text size="sm">
-            Copy address
-        </Text>
+        <Group spacing="xs">
+            <ThemeIcon variant="subtle" size="xs" color="dark">
+                <Copy />
+            </ThemeIcon>
+            <Text size="sm">
+                Copy address
+            </Text>
+        </Group>
     </Menu.Item>
     <Menu.Item on:click={resetState}>
-        <Text size="sm">
-            Disconnect wallet
-        </Text>
+        <Group spacing="xs">
+            <ThemeIcon variant="subtle" size="xs" color="dark">
+                <Exit />
+            </ThemeIcon>
+            <Text size="sm">
+                Disconnect wallet
+            </Text>
+        </Group>
     </Menu.Item>
 </Menu>
