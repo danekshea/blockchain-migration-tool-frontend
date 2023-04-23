@@ -1,11 +1,13 @@
 <script lang="ts">
     import { Button, Notification } from "@svelteuidev/core";
-    import { completedSteps } from "../stores/generic"
+    import { completedSteps, registrationStatus } from "../stores/generic"
     import { Check } from 'radix-icons-svelte';
     import { RegistrationStatus } from "../types"
     import RegisterWalletModal from "./RegisterWalletModal.svelte";
 
-    export let status = RegistrationStatus.Unchecked;
+    //export let status = RegistrationStatus.Unchecked;
+    export let client, address;
+
     let registerWalletModal = false;
     let registering = false;
 
@@ -15,13 +17,13 @@
 
     function registerSuccess() {
         completedSteps.set(2)
-        status = RegistrationStatus.Registered;
+        $registrationStatus = RegistrationStatus.Registered;
     }
 </script>
 
 <RegisterWalletModal bind:registerWalletModal bind:registering/>
 
-{#if status === RegistrationStatus.Unregistered}
+{#if $registrationStatus === RegistrationStatus.Unregistered}
     {#if registering === false}
         <Button on:click={openRegisterModal} class="mt-5" variant="light" color="orange" radius="xl">
             Register me on Immutable X!

@@ -1,8 +1,24 @@
 import { sveltekit } from '@sveltejs/kit/vite';
-import type { UserConfig } from 'vite';
+import { defineConfig } from 'vite'
+import path from 'path'
 
-const config: UserConfig = {
-	plugins: [sveltekit()]
-};
-
-export default config;
+// https://vitejs.dev/config/
+export default defineConfig({
+  server: {
+    port: 8080
+  },
+  build: {
+    commonjsOptions: {
+      transformMixedEsModules: true
+    }
+  },
+  plugins: [sveltekit()],
+  resolve: {
+    alias: {
+      'web3': 'web3/dist/web3.min.js',
+      '@': path.resolve(__dirname, 'src'),
+      'src': path.resolve(__dirname, 'src'),
+      'https': path.resolve(__dirname, 'node_modules/stream-http')
+    }
+}
+})

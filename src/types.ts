@@ -50,8 +50,9 @@ export interface chainDetails {
 
 export const RegistrationStatus = {
   Unchecked: 0,
-  Unregistered: 1,
-  Registered: 2
+  Checking: 1, 
+  Unregistered: 2,
+  Registered: 3
 };
 
 export const NFTDisplayCategory = {

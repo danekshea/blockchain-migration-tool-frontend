@@ -5,12 +5,15 @@
     import Disclaimers from "../comps/Disclaimers.svelte";
     import NFTDisplayBurn from "../comps/NFTDisplayBurn.svelte";
     import NFTDisplayReceive from "../comps/NFTDisplayReceive.svelte";
+    import RegisterWalletNotification from "../comps/RegisterWalletNotification.svelte"
 
     export let walletAddress = "";
     export let chainId = 0;
     //export let loading=true;
 
 </script>
+
+<RegisterWalletNotification />
 
 <Timeline active={$completedSteps} lineWidth={5} bulletSize={20} color="green" class="p-5">
     <Timeline.Item title="Connect wallet">

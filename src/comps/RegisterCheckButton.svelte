@@ -1,42 +1,26 @@
 <script lang="ts">
-    import { Button, Notification } from "@svelteuidev/core";
-    import { completedSteps } from "../stores/generic"
-    import { Check, Cross2 } from 'radix-icons-svelte';
+    import { Button } from "@svelteuidev/core";
+    import { completedSteps, registrationStatus } from "../stores/generic"
     import { RegistrationStatus } from "../types"
 
-    export let status;
-    let checking = false;
+    export let client, address;
+    let isRegistered;
 
-    function registerSuccess() {
-        completedSteps.set(2)
-        status = RegistrationStatus.Registered;
-    }
-
-    function registerFail() {
-        status = RegistrationStatus.Unregistered;
-        checking = false;
-    }
-
-    function checkRegistered() {
-        checking = true;
+    async function checkRegistered(address) {
+        registrationStatus.set(RegistrationStatus.Checking);
+        try {
+            isRegistered = await client.getUser(address);
+            if (isRegistered.accounts.length) {
+                console.log("registered")
+                registrationStatus.set(RegistrationStatus.Registered);
+                completedSteps.set(2)
+            }
+        } catch (error) {
+            console.error(error)
+            registrationStatus.set(RegistrationStatus.Unregistered);            
+        }
     }
 </script>
-
-{#if status === RegistrationStatus.Unchecked}
-    <Button class="mt-5" on:click={checkRegistered} variant="light" color="orange" radius="xl">
-        Check if I'm registered on Immutable X!
-    </Button>
-    {#if checking === true}
-        <Notification on:close={registerFail} class="fixed top-1 right-1 z-10" title='Checking registration' loading>
-            Checking registration status...
-        </Notification>
-    {/if}
-{:else if status === RegistrationStatus.Unregistered}
-    <Notification on:close={registerFail} class="fixed top-1 right-1 z-10" title='Fail' icon={Cross2} color='red'>
-        Not registered on Immutable X.
-    </Notification>
-{:else if status === RegistrationStatus.Registered}
-    <Notification on:close={registerSuccess} class="fixed top-1 right-1 z-10" title='Success' icon={Check} color='teal'>
-        Successfully registered on Immutable X!
-    </Notification> 
-{/if}
+<Button class="mt-5" on:click={() => checkRegistered(address)} variant="light" color="orange" radius="xl">
+    Check if I'm registered on Immutable X!
+</Button>

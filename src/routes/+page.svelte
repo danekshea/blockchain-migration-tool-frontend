@@ -4,6 +4,8 @@
   import Description from "../comps/Description.svelte";
   import Instructions from "../comps/Instructions.svelte";
   import ImmutableLogo from "../comps/ImmutableLogo.svelte";
+  import { completedSteps, registrationStatus } from "../stores/generic"
+  import RegisterWalletNotification from "../comps/RegisterWalletNotification.svelte"
 
   let walletAddress = "";
   let chainId = 0;
@@ -16,6 +18,7 @@
   <Description/>
   <Instructions bind:walletAddress bind:chainId />
   <ImmutableLogo bind:isDark/>
+  <RegisterWalletNotification />
 </SvelteUIProvider>
 
 
