@@ -1,6 +1,6 @@
 <script lang="ts">
-    import NFTDisplay from "./NFTDisplay.svelte";
-    import { NFTDisplayCategory } from "../types"
+    import NFTDisplay from "../nft/NFTDisplay.svelte";
+    import { NFTDisplayCategory } from "../../types"
 
     let burning=false;
     let originNFTs = [1, 2, 3];

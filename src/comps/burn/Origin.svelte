@@ -2,8 +2,8 @@
 // @ts-nocheck
 
     import { ethers } from "ethers";
-    import { originTokenStore } from "../stores/tokens";
-    import { chains, abi, tokenScannerURL } from "../utils/blockchain";
+    import { originTokenStore } from "../../stores/tokens";
+    import { chains, abi, tokenScannerURL } from "../../utils/blockchain";
 
     export let address = "";
     export let originCollectionAddress = "";

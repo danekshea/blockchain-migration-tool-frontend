@@ -1,6 +1,6 @@
 <script lang="ts">
-  import { destinationTokenStore } from "../stores/tokens";
-  import { chains, tokenScannerURL } from "../utils/blockchain";
+  import { destinationTokenStore } from "../../stores/tokens";
+  import { chains, tokenScannerURL } from "../../utils/blockchain";
 
   export let address = "";
   export let destinationChain;

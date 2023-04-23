@@ -1,8 +1,8 @@
 <script lang="ts">
     import { Button } from "@svelteuidev/core";
-    import { completedSteps, registrationStatus } from "../stores/generic"
-    import { RegistrationStatus } from "../types"
-    import { walletAddress } from "../stores/generic";
+    import { completedSteps, registrationStatus } from "../../stores/generic"
+    import { RegistrationStatus } from "../../types"
+    import { walletAddress } from "../../stores/generic";
 
     export let client;
     let isRegistered;

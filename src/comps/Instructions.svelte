@@ -1,11 +1,11 @@
 <script lang="ts">
     import { Timeline, Text } from "@svelteuidev/core"
     import { completedSteps } from "../stores/generic";
-    import RegisterWallet from "../comps/RegisterWallet.svelte";
+    import RegisterWallet from "../comps/register/RegisterWallet.svelte";
     import Disclaimers from "../comps/Disclaimers.svelte";
-    import NFTDisplayBurn from "../comps/NFTDisplayBurn.svelte";
-    import NFTDisplayReceive from "../comps/NFTDisplayReceive.svelte";
-    import RegisterWalletNotification from "../comps/RegisterWalletNotification.svelte"
+    import NFTDisplayBurn from "../comps/burn/NFTDisplayBurn.svelte";
+    import NFTDisplayReceive from "./receive/NFTDisplayReceive.svelte";
+    import RegisterWalletNotification from "../comps/register/RegisterWalletNotification.svelte"
 
 </script>
 

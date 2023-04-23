@@ -1,6 +1,6 @@
 <script lang="ts">
   import { SvelteUIProvider, Seo } from '@svelteuidev/core';
-  import Navigation from "../comps/Navigation.svelte";
+  import Navigation from "../comps/navigation/Navigation.svelte";
   import Description from "../comps/Description.svelte";
   import Instructions from "../comps/Instructions.svelte";
   import ImmutableLogo from "../comps/ImmutableLogo.svelte";

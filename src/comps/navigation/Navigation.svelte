@@ -1,5 +1,5 @@
 <script lang="ts">
-    import ConnectWallet from "./ConnectWallet.svelte";
+    import ConnectWallet from "../connect/ConnectWallet.svelte";
     import LightDarkButton from "./LightDarkButton.svelte";
     import MainLogo from "./MainLogo.svelte";
 

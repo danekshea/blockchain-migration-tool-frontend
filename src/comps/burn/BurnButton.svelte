@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Button } from '@svelteuidev/core';
-    import { completedSteps } from "../stores/generic";
-    import { NFTDisplayCategory } from "../types"
+    import { completedSteps } from "../../stores/generic";
+    import { NFTDisplayCategory } from "../../types"
     import BurnNotification from "./BurnNotification.svelte";
 
     export let burning;

@@ -1,9 +1,9 @@
 <script lang="ts">
     import { Menu, Text, Button, ThemeIcon, Group } from "@svelteuidev/core"
-    import { completedSteps } from "../stores/generic"
-    import { sliceAddress } from "../utils/utils";
+    import { completedSteps } from "../../stores/generic"
+    import { sliceAddress } from "../../utils/utils";
     import { Copy, Exit } from "radix-icons-svelte"
-    import { walletAddress } from "../stores/generic";
+    import { walletAddress } from "../../stores/generic";
 
     export let walletConnected;
 

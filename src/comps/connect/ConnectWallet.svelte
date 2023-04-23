@@ -14,7 +14,7 @@
     }
 </script>
 
-<ConnectWalletModal bind:walletOptionsModal bind:walletAddress bind:walletConnected bind:chainId/>
+<ConnectWalletModal bind:walletOptionsModal bind:walletConnected/>
 
 <div class="ml-auto flex items-center p-0.5 rounded-[40px]">
     {#if walletConnected===false}
@@ -29,6 +29,6 @@
             </Group>
         </Button>
     {:else}
-        <WalletMenu bind:walletAddress bind:walletConnected/>
+        <WalletMenu bind:walletConnected/>
     {/if}
 </div>

@@ -1,8 +1,8 @@
 <script lang="ts">
     import { Notification } from "@svelteuidev/core";
-    import { registrationStatus } from "../stores/generic"
+    import { registrationStatus } from "../../stores/generic"
     import { Check, Cross2 } from 'radix-icons-svelte';
-    import { RegistrationStatus } from "../types"
+    import { RegistrationStatus } from "../../types"
 
     let visible = true;
 

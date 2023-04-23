@@ -1,7 +1,7 @@
 <script lang="ts">
     import { Skeleton, Card, Image, Group, Text, Button } from '@svelteuidev/core';
-    import BurnButton from './BurnButton.svelte'
-    import { NFTDisplayCategory } from "../types"
+    import BurnButton from '../burn/BurnButton.svelte'
+    import { NFTDisplayCategory } from "../../types"
 
     export let nft;
     export let burning;

@@ -1,8 +1,8 @@
 <script lang="ts">
     import { Button, Notification } from "@svelteuidev/core";
-    import { completedSteps, registrationStatus } from "../stores/generic"
+    import { completedSteps, registrationStatus } from "../../stores/generic"
     import { Check } from 'radix-icons-svelte';
-    import { RegistrationStatus } from "../types"
+    import { RegistrationStatus } from "../../types"
     import RegisterWalletModal from "./RegisterWalletModal.svelte";
 
     //export let status = RegistrationStatus.Unchecked;
