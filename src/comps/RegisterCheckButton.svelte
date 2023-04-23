@@ -2,8 +2,9 @@
     import { Button } from "@svelteuidev/core";
     import { completedSteps, registrationStatus } from "../stores/generic"
     import { RegistrationStatus } from "../types"
+    import { walletAddress } from "../stores/generic";
 
-    export let client, address;
+    export let client;
     let isRegistered;
 
     async function checkRegistered(address) {
@@ -21,6 +22,7 @@
         }
     }
 </script>
-<Button class="mt-5" on:click={() => checkRegistered(address)} variant="light" color="orange" radius="xl">
+
+<Button class="mt-5" on:click={() => checkRegistered($walletAddress)} variant="light" color="orange" radius="xl">
     Check if I'm registered on Immutable X!
 </Button>

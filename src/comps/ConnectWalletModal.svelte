@@ -3,11 +3,10 @@
     import { completedSteps } from "../stores/generic";
     import { ethers } from "ethers";
     import { originChain } from "../utils/blockchain";
+    import { walletAddress, chainId } from "../stores/generic";
 
     export let walletOptionsModal = false;
     export let walletConnected = false;
-    export let walletAddress = "";
-    export let chainId = 0;
 
     function closeWalletOptions() {
         walletOptionsModal=false;
@@ -38,8 +37,8 @@
                     params: [{ chainId: `0x${originChain.toString(16)}` }]
                 });
             }
-            walletAddress = await signer.getAddress();
-            chainId = await signer.getChainId();
+            walletAddress.set(await signer.getAddress());
+            chainId.set(await signer.getChainId());
             connectWalletSuccess();
 
         } catch (error) {

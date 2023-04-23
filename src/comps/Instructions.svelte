@@ -7,10 +7,6 @@
     import NFTDisplayReceive from "../comps/NFTDisplayReceive.svelte";
     import RegisterWalletNotification from "../comps/RegisterWalletNotification.svelte"
 
-    export let walletAddress = "";
-    export let chainId = 0;
-    //export let loading=true;
-
 </script>
 
 <RegisterWalletNotification />

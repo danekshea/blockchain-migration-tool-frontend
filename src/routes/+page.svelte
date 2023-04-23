@@ -5,7 +5,6 @@
   import Instructions from "../comps/Instructions.svelte";
   import ImmutableLogo from "../comps/ImmutableLogo.svelte";
   import { completedSteps, registrationStatus } from "../stores/generic"
-  import RegisterWalletNotification from "../comps/RegisterWalletNotification.svelte"
 
   let walletAddress = "";
   let chainId = 0;
@@ -14,11 +13,10 @@
 
 <SvelteUIProvider withGlobalStyles themeObserver={isDark ? 'dark' : 'light'}>
   <Seo title="Immutable Migration Tool"/>
-  <Navigation bind:walletAddress bind:chainId bind:isDark/>
+  <Navigation bind:isDark/>
   <Description/>
-  <Instructions bind:walletAddress bind:chainId />
+  <Instructions/>
   <ImmutableLogo bind:isDark/>
-  <RegisterWalletNotification />
 </SvelteUIProvider>
 
 

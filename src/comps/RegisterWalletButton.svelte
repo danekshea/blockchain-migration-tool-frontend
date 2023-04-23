@@ -6,7 +6,7 @@
     import RegisterWalletModal from "./RegisterWalletModal.svelte";
 
     //export let status = RegistrationStatus.Unchecked;
-    export let client, address;
+    export let client;
 
     let registerWalletModal = false;
     let registering = false;

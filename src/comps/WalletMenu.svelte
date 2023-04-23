@@ -3,17 +3,17 @@
     import { completedSteps } from "../stores/generic"
     import { sliceAddress } from "../utils/utils";
     import { Copy, Exit } from "radix-icons-svelte"
+    import { walletAddress } from "../stores/generic";
 
-    export let walletAddress;
     export let walletConnected;
 
-    const copyToClipboard = (walletAddress) => {
-        if(!walletAddress) return
-        navigator.clipboard.writeText(walletAddress)
+    const copyToClipboard = (address) => {
+        if(address === "") return
+        navigator.clipboard.writeText(address)
     }
 
     function disconnectWallet() {
-        walletAddress = "";
+        walletAddress.set("");
         completedSteps.set(0); // reset to initial state
         walletConnected = false;
     }
@@ -26,9 +26,9 @@
 
 <Menu trigger='hover' delay={250}>
     <Button slot="control" variant="subtle" color="dark" radius="xl">
-        {sliceAddress(walletAddress)}
+        {sliceAddress($walletAddress)}
     </Button>
-    <Menu.Item on:click={() => copyToClipboard(walletAddress)}>
+    <Menu.Item on:click={() => copyToClipboard($walletAddress)}>
         <Group spacing="xs">
             <ThemeIcon variant="subtle" size="xs" color="dark">
                 <Copy />
