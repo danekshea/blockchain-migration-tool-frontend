@@ -1,5 +1,5 @@
 ## Introduction
-This is the frontend for the migration tool to go from EVM chains to Immutable X. The backend is located here: https://github.com/danekshea/blockchain-migration-tool.
+This is the frontend for the migration tool to go from EVM chains to Immutable X. The backend is located here: https://github.com/danekshea/blockchain-migration-tool-backend.
 
 The frontend application is programmed in Svelte and simply burns a token on the EVM chain and displays the resulting token fetches on both the origin chain and the destination chain. The app uses Moralis as a node.
 
