@@ -7,6 +7,7 @@ The following EVM origin chains are supported:
 * Arbitrum
 * Avalanche C-chain
 * BNB
+* Cronos
 * ETH L1
 * Fantom
 * Polygon PoS

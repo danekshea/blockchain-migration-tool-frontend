@@ -18,6 +18,7 @@ export const abi:string = JSON.parse(
 export const chains: { [key: number]: chainDetails } = {
     1: {name: "Ethereum", shortName: "eth", img: "eth.svg"},
     5: {name: "Goerli", shortName: "goerli", img: "eth.svg"},
+    25: {name: "Chronos", shortName: "cro", img: "cro.png"},
     56: {name: "BNB Chain", shortName: "bnb", img: "bnb.svg"},
     97: {name: "BNB Chain Testnet", shortName: "bnb testnet", img: "bnb.svg"},
     137: {name: "Polygon", shortName: "polygon", img: "polygon.svg"},
@@ -55,6 +56,9 @@ export const tokenScannerURL = (collectionAddress: string, tokenid: string, netw
     }
     else if(network == 5) {
         return "https://goerli.etherscan.io/nft/" + collectionAddress + "/" + tokenid;
+    }
+    else if(network == 25) {
+        return "https://cronoscan.com/token/" + collectionAddress + "?a=" + tokenid;
     }
     else if(network == 56) {
         return "https://bscscan.com/token/" + collectionAddress + "?a=" + tokenid;
@@ -95,6 +99,9 @@ export const addressScannerURL = (address:string, network:number) => {
     }
     else if(network == 5) {
         return "https://goerli.etherscan.io/address/" + address;
+    }
+    else if(network == 25) {
+        return "https://cronoscan.com/address/" + address;
     }
     else if(network == 56) {
         return "https://bscscan.com/address/" + address;
