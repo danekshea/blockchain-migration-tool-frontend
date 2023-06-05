@@ -20,7 +20,7 @@ export const chains: { [key: number]: chainDetails } = {
     5: {name: "Goerli", shortName: "goerli", img: "eth.svg"},
     25: {name: "Cronos", shortName: "cro", img: "cro.png"},
     56: {name: "BNB Chain", shortName: "bnb", img: "bnb.svg"},
-    97: {name: "BNB Chain Testnet", shortName: "bnb testnet", img: "bnb.svg"},
+    97: {name: "BNB Chain Testnet", shortName: "bsc testnet", img: "bnb.svg"},
     137: {name: "Polygon", shortName: "polygon", img: "polygon.svg"},
     250: {name: "Fantom", shortName: "fantom", img: "fantom.svg"},
     5000: {name: "ImmutableX", shortName: "imx", img: "imx.png"},
