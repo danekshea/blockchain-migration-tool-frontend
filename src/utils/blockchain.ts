@@ -18,7 +18,7 @@ export const abi:string = JSON.parse(
 export const chains: { [key: number]: chainDetails } = {
     1: {name: "Ethereum", shortName: "eth", img: "eth.svg"},
     5: {name: "Goerli", shortName: "goerli", img: "eth.svg"},
-    25: {name: "Chronos", shortName: "cro", img: "cro.png"},
+    25: {name: "Cronos", shortName: "cro", img: "cro.png"},
     56: {name: "BNB Chain", shortName: "bnb", img: "bnb.svg"},
     97: {name: "BNB Chain Testnet", shortName: "bnb testnet", img: "bnb.svg"},
     137: {name: "Polygon", shortName: "polygon", img: "polygon.svg"},
